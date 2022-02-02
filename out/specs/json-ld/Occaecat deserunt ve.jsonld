@@ -1,0 +1,72 @@
+[
+  {
+    "@graph": [
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/1ddc8684-16b4-4d9f-99a5-69bb2323470a",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/dcat#Distribution"
+        ],
+        "http://www.w3.org/ns/dcat#accessURL": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "@value": "Omnis ex porro et re"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/eb7ffbe44419051e0d352dbac3881e9ee234cbb8ab115a47e2da4415eae2f335",
+        "@type": [
+          "http://data.europa.eu/2sa/cssv#Standard",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cssv#isMaintainedBy": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/888cf0b93c3579f6c2782f5252e66631753f4654323c600c5df8c573d796c37b"
+          }
+        ],
+        "http://purl.org/dc/terms/title": [
+          {
+            "@language": "en",
+            "@value": "Occaecat deserunt ve"
+          }
+        ],
+        "http://www.w3.org/ns/dcat#distribution": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/1ddc8684-16b4-4d9f-99a5-69bb2323470a"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/9dc44d65-1ed0-426a-8212-f4baa7c84efd",
+        "@type": [
+          "http://schema.org/ContactPoint",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cssv#isContactPointOf": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/888cf0b93c3579f6c2782f5252e66631753f4654323c600c5df8c573d796c37b"
+          }
+        ],
+        "http://schema.org/email": [
+          {
+            "@value": "Praesentium dolor ve"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/888cf0b93c3579f6c2782f5252e66631753f4654323c600c5df8c573d796c37b",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "http://www.w3.org/2004/02/skos/core#prefLabel": [
+          {
+            "@value": "IETF (https://www.ietf.org/)"
+          }
+        ]
+      }
+    ],
+    "@id": "http://data.europa.eu/2sa/cssv/rsc/"
+  }
+]

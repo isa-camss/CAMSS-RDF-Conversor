@@ -1,0 +1,72 @@
+[
+  {
+    "@graph": [
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/4fe14b8e-502a-4311-9339-9ae658037772",
+        "@type": [
+          "http://schema.org/ContactPoint",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cssv#isContactPointOf": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/888cf0b93c3579f6c2782f5252e66631753f4654323c600c5df8c573d796c37b"
+          }
+        ],
+        "http://schema.org/email": [
+          {
+            "@value": "nan"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/382532edd2a639d8d82badf47d7852b2c18f3430bf564f603ef4c406cfea4a9d",
+        "@type": [
+          "http://data.europa.eu/2sa/cssv#Standard",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cssv#isMaintainedBy": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/888cf0b93c3579f6c2782f5252e66631753f4654323c600c5df8c573d796c37b"
+          }
+        ],
+        "http://purl.org/dc/terms/title": [
+          {
+            "@language": "en",
+            "@value": "Resource Public Key Infrastructure"
+          }
+        ],
+        "http://www.w3.org/ns/dcat#distribution": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/71abd37a-dda5-4a6a-a3ea-482f2d81ac3d"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/71abd37a-dda5-4a6a-a3ea-482f2d81ac3d",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/dcat#Distribution"
+        ],
+        "http://www.w3.org/ns/dcat#accessURL": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "@value": "https://tools.ietf.org/html/rfc6480"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/888cf0b93c3579f6c2782f5252e66631753f4654323c600c5df8c573d796c37b",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "http://www.w3.org/2004/02/skos/core#prefLabel": [
+          {
+            "@value": "IETF (https://www.ietf.org/)"
+          }
+        ]
+      }
+    ],
+    "@id": "http://data.europa.eu/2sa/cssv/rsc/"
+  }
+]

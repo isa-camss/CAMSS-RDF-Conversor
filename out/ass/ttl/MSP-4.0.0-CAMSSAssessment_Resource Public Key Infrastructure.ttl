@@ -1,0 +1,270 @@
+@prefix camss: <http://data.europa.eu/2sa/ontology#> .
+@prefix camssa: <http://data.europa.eu/2sa/assessments/> .
+@prefix cav: <http://data.europa.eu/2sa/cav#> .
+@prefix cssvrsc: <http://data.europa.eu/2sa/cssv/rsc/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sc: <http://data.europa.eu/2sa/scenarios#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix status: <http://data.europa.eu/2sa/rsc/assessment-status#> .
+@prefix tool: <http://data.europa.eu/2sa/rsc/toolkit-version#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+camssa:0929d47daef4b6f9f5c621b8a24de05c4099b89b32f05e0167f2277f80eec258 a cav:Assessment,
+        owl:NamedIndividual ;
+    cav:contextualisedBy sc:5571166e562bcad6d6fd854688a24677c246e6fb4570f7522e32803218b5fc7c ;
+    cav:resultsIn camssa:03ad31c3-ed7c-48d3-be9e-ebc0a82c7c58,
+        camssa:09076149-5300-4543-8231-064b9d231ee2,
+        camssa:217528c3-42a1-4af7-ad8c-d534f6079d59,
+        camssa:27370bc9-8ad8-4b5a-8b1f-fc9fdf3c9c66,
+        camssa:3e825fea-c410-4294-9e5b-8473c09e5470,
+        camssa:61312933-353b-4a6b-83ad-a66b87527cfe,
+        camssa:67154265-d2f7-412a-a215-02f5c0190898,
+        camssa:6ab7c334-2edb-47ca-a039-8ae63f9ba943,
+        camssa:723d8e54-0a24-491f-b0af-3f2750d44fa3,
+        camssa:810a6a21-e366-4590-9350-957e8ab2d9cc,
+        camssa:8195c9b3-792a-4817-9e3a-73768929ae79,
+        camssa:939074d4-4322-435f-b6a3-c9b25856cb63,
+        camssa:97399bf0-6c29-4ed7-b00a-e1587ccbf770,
+        camssa:993e88f4-e21a-4472-a0e8-eb90124b5197,
+        camssa:a4b848a4-a2bf-4672-84b6-1f81652124c9,
+        camssa:aa4973cd-4556-448f-8cdc-6d9c349150eb,
+        camssa:b4591250-b499-425a-96ba-246e3bea7fa0,
+        camssa:b5fc97da-697a-4875-83de-da80acbd1f2d,
+        camssa:b6d6cf04-5808-486b-b0d6-de8426a8e72a,
+        camssa:d2200b6e-3888-4b0f-a157-63057746291c,
+        camssa:e4a6c163-0077-4334-84c5-a25c5cf6c65b,
+        camssa:f9def4b9-44b1-4e0b-9a6e-c3612063366e ;
+    cav:status status:Complete ;
+    camss:assesses cssvrsc:382532edd2a639d8d82badf47d7852b2c18f3430bf564f603ef4c406cfea4a9d ;
+    camss:assessmentDate "None"^^xsd:date ;
+    camss:submissionDate "None"^^xsd:date ;
+    dcterms:title "Resource Public Key Infrastructure"@en ;
+    xsd:toolVersion tool:4.0.0 .
+
+camssa:ddf032efca18c9e6eaa97bc90924977af1d96bffe564b351a6081835c75d8164 a owl:NamedIndividual,
+        org:Organization ;
+    camss:ContactPoint camssa:9196a23b-a1df-4117-9b38-3f9760dcbeed ;
+    skos:prefLabel "CAMSS everis"@en .
+
+camssa:03ad31c3-ed7c-48d3-be9e-ebc0a82c7c58 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdsad"@en ;
+    cav:refersTo camssa:ed778b7e-12bd-4db3-9571-7e5b06f1774e .
+
+camssa:09076149-5300-4543-8231-064b9d231ee2 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadasdas"@en ;
+    cav:refersTo camssa:6fa72c3a-80c3-43b4-933e-db17cfc41ed4 .
+
+camssa:217528c3-42a1-4af7-ad8c-d534f6079d59 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadasd"@en ;
+    cav:refersTo camssa:21f7acb6-7d51-4166-b549-f5a9b3ff245e .
+
+camssa:21f7acb6-7d51-4166-b549-f5a9b3ff245e a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-ae7d0ff7b89373550f80e02b1a2b44e21726639080556453ee9c4fba861a8fd7 ;
+    cav:value "1"^^xsd:int .
+
+camssa:27370bc9-8ad8-4b5a-8b1f-fc9fdf3c9c66 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadsad"@en ;
+    cav:refersTo camssa:aa68e351-8a57-45af-a6d0-c715fb7a2f97 .
+
+camssa:3e825fea-c410-4294-9e5b-8473c09e5470 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdsad"@en ;
+    cav:refersTo camssa:515b7224-52f2-4e50-80ca-feba1a712412 .
+
+camssa:48c87434-8b75-4291-bddb-ae5f9d5919a5 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-923825ea86a7939a1cbdcdeb83be96b047beaaeb51b65f1f119e75f841841181 ;
+    cav:value "0"^^xsd:int .
+
+camssa:515b7224-52f2-4e50-80ca-feba1a712412 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-094c66577369fde0ea88233b45fc65d11c80250d618afbbdf78bafd23ea34e36 ;
+    cav:value "0"^^xsd:int .
+
+camssa:5b9fc261-0918-4dde-8b3b-5573908a6875 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-22a68458007d7f05a947c9a54bd72ba9f79d0998e3bbc818baafd1bbf5ad43b6 ;
+    cav:value "1"^^xsd:int .
+
+camssa:61094459-aa03-4647-92b3-694d3f486af2 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-cf201844fc90b5d8c877f2eda069df51a3f3e744cdb0c000bdcf89a71809955e ;
+    cav:value "1"^^xsd:int .
+
+camssa:61312933-353b-4a6b-83ad-a66b87527cfe a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadsadas"@en ;
+    cav:refersTo camssa:aa20489e-c53e-4948-83a3-0ea87f4c20f4 .
+
+camssa:667cd71e-4bb6-4b2f-81af-830450a2a600 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-cac1c963ee5c3624035d7a98a8577db18d04ad6528afc51785f1230f23566ff1 ;
+    cav:value "2"^^xsd:int .
+
+camssa:67154265-d2f7-412a-a215-02f5c0190898 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "nan"@en ;
+    cav:refersTo camssa:ac82a66e-4849-455d-865d-b3b4a48a17b8 .
+
+camssa:693f72d7-455f-4bb5-b055-e4ce1815f189 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-29a9d507787a2ce195271cf0fccc0be70a2f97f7dc40327999ff236880c5435f ;
+    cav:value "2"^^xsd:int .
+
+camssa:6ab7c334-2edb-47ca-a039-8ae63f9ba943 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "nan"@en ;
+    cav:refersTo camssa:99286b78-a93c-4c42-baf3-883278642d8b .
+
+camssa:6fa72c3a-80c3-43b4-933e-db17cfc41ed4 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-79428f74d331f4691808494a52b5e97c4bf9704855d6cd673bc8e365fc3584e7 ;
+    cav:value "1"^^xsd:int .
+
+camssa:723d8e54-0a24-491f-b0af-3f2750d44fa3 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadasda"@en ;
+    cav:refersTo camssa:48c87434-8b75-4291-bddb-ae5f9d5919a5 .
+
+camssa:725535c9-7880-412b-b126-934630dbc90f a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-a2ce2a611b24e4f79b8a4ad70564929da9d24cecf69d086873e21de9aec5db39 ;
+    cav:value "2"^^xsd:int .
+
+camssa:810a6a21-e366-4590-9350-957e8ab2d9cc a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadsad"@en ;
+    cav:refersTo camssa:9f7293f1-6e2d-4500-aa87-a91061980418 .
+
+camssa:8195c9b3-792a-4817-9e3a-73768929ae79 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdasd"@en ;
+    cav:refersTo camssa:cd2df2cc-a955-4bd9-b42a-dffe031e85c3 .
+
+camssa:89a951a7-9b9a-4587-9593-5a1b67ba395a a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-33b5b305bcc0a995fd3c592dc8a6f52d0749a6e817aa85844f3e4f31c7dea344 ;
+    cav:value "1"^^xsd:int .
+
+camssa:939074d4-4322-435f-b6a3-c9b25856cb63 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdsad"@en ;
+    cav:refersTo camssa:5b9fc261-0918-4dde-8b3b-5573908a6875 .
+
+camssa:97399bf0-6c29-4ed7-b00a-e1587ccbf770 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadsad"@en ;
+    cav:refersTo camssa:f1185322-1995-4783-9225-ed76bc306da0 .
+
+camssa:99286b78-a93c-4c42-baf3-883278642d8b a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-4386f49ebcfb474f011867d54ec0e7a7c561f91c288f5809299a05d781432bf0 ;
+    cav:value "1"^^xsd:int .
+
+camssa:993e88f4-e21a-4472-a0e8-eb90124b5197 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadsad"@en ;
+    cav:refersTo camssa:89a951a7-9b9a-4587-9593-5a1b67ba395a .
+
+camssa:9f7293f1-6e2d-4500-aa87-a91061980418 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-164f43cef11b50b88c51c7115a7b37e506af696852ddaf46dfc1cb1c1521ec6d ;
+    cav:value "1"^^xsd:int .
+
+camssa:a4b848a4-a2bf-4672-84b6-1f81652124c9 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdasd"@en ;
+    cav:refersTo camssa:693f72d7-455f-4bb5-b055-e4ce1815f189 .
+
+camssa:aa20489e-c53e-4948-83a3-0ea87f4c20f4 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-bf67cb3b8aecfa80e71d67795c864a7ec5c79d00b4a942bffb49f16b2bf4bd21 ;
+    cav:value "0"^^xsd:int .
+
+camssa:aa4973cd-4556-448f-8cdc-6d9c349150eb a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadasd"@en ;
+    cav:refersTo camssa:df3c1f97-33ab-476f-a547-2d23efef1ec2 .
+
+camssa:aa68e351-8a57-45af-a6d0-c715fb7a2f97 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-7ede9122e530b12ca81694e3ce1f21fa7cf4d6d071d0edb0a2082a0e0d2ad8e4 ;
+    cav:value "2"^^xsd:int .
+
+camssa:ac82a66e-4849-455d-865d-b3b4a48a17b8 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-2614723a75c6a002b733f97562482608046dd2e6da97e3073312dbbdaf482279 ;
+    cav:value "1"^^xsd:int .
+
+camssa:b4591250-b499-425a-96ba-246e3bea7fa0 a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdsad"@en ;
+    cav:refersTo camssa:e8725e4e-b366-4c0a-93e6-b7faa228e82d .
+
+camssa:b5fc97da-697a-4875-83de-da80acbd1f2d a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "nan"@en ;
+    cav:refersTo camssa:de0b9fdb-efeb-4acb-b38f-1b8d2caa93c1 .
+
+camssa:b6d6cf04-5808-486b-b0d6-de8426a8e72a a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "asdsad"@en ;
+    cav:refersTo camssa:c6f19baf-a1a4-4d33-8b5e-5e33819d5ec8 .
+
+camssa:c6f19baf-a1a4-4d33-8b5e-5e33819d5ec8 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-6f7b3377cc1836eb056d44786260085e36fc1d6856a3aa3d37fe017e16cfc319 ;
+    cav:value "0"^^xsd:int .
+
+camssa:cd2df2cc-a955-4bd9-b42a-dffe031e85c3 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-5b29a4581c52656a3bcf08224b259c29610cb540c56af4512ebe0ded3adeeac1 ;
+    cav:value "0"^^xsd:int .
+
+camssa:d2200b6e-3888-4b0f-a157-63057746291c a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadasd"@en ;
+    cav:refersTo camssa:61094459-aa03-4647-92b3-694d3f486af2 .
+
+camssa:de0b9fdb-efeb-4acb-b38f-1b8d2caa93c1 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-d6a380fade3199038c443aba7b7a7a0b8e7af683cab0054ff07f0d31055cf78a ;
+    cav:value "2"^^xsd:int .
+
+camssa:df3c1f97-33ab-476f-a547-2d23efef1ec2 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-270395a1102e93d4ef4e06e2ae99377d63df1f5ed898424abb074afe3ea84ed9 ;
+    cav:value "0"^^xsd:int .
+
+camssa:e4a6c163-0077-4334-84c5-a25c5cf6c65b a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "nan"@en ;
+    cav:refersTo camssa:725535c9-7880-412b-b126-934630dbc90f .
+
+camssa:e8725e4e-b366-4c0a-93e6-b7faa228e82d a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-d310596912dbc916997008f4aed16a81cf5e708cd907e3c53a2e4207468b468b ;
+    cav:value "1"^^xsd:int .
+
+camssa:ed778b7e-12bd-4db3-9571-7e5b06f1774e a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-cd828c0ec9887027bdb6b981560bde593cda27c080298ab36323ba5441ba4c31 ;
+    cav:value "1"^^xsd:int .
+
+camssa:f1185322-1995-4783-9225-ed76bc306da0 a cav:Score,
+        owl:NamedIndividual ;
+    cav:assignedTo sc:c-a77bb552d5c6a288e35512a0022ac7352055bee40ab973a77c87e7301c36338e ;
+    cav:value "2"^^xsd:int .
+
+camssa:f9def4b9-44b1-4e0b-9a6e-c3612063366e a cav:Statement,
+        owl:NamedIndividual ;
+    cav:judgement "sadasd"@en ;
+    cav:refersTo camssa:667cd71e-4bb6-4b2f-81af-830450a2a600 .
+

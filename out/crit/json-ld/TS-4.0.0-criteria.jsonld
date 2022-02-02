@@ -1,0 +1,898 @@
+[
+  {
+    "@graph": [
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#56c5910ad7b8cebd9f09d962ac4cfe90ae2a85d255b7f6dff5499bd0d448203c",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The standards development/setting organisation approves all the technical specifications and/or standards in a decision making process aiming to reach consensus."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#f3b64535d2118a1a29f29a7a4a4caedeeb0038b36f927cb7d5defb26d011222c",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is largely compatible with related (not alternative) technical specification or standards in the same area of application."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#2b8b8898d5e31d8788a86c60952d506471e0ee0c7fc960c90a01436961e60287",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard has a strong support from at least one interest group."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#86d24c0fd3ad945a1e663f266430e28a80453ab19902439d4765852f9ef9a5e8",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Scenario",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#description": [
+          {
+            "@language": "en",
+            "@value": "This CAMSS scenario is dedicated to the assessment of formal technical specification, in general terms. According to the regulation on standardisation 1025/2012, a technical specification is a 'document that prescribes technical requirements to be fulfilled by a product, process, service or system'."
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#includes": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#d36837f06241cc1cee0ce581ee3a8c36c4117d84fa7aea1308317d146b749220"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#fd2f9ea68253706e5f50ec9c1887c6f15e6364e047ac1f0269bde25e4f11aab2"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#eb039e3d464cf0ba44a17e0cd28133b478488014463e23a7ca8444b891af26fa"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#011dda3c4b5602a3b73b76236081e89fdb381423bfa620f813324154803f72a1"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#821093d41a41f283e0401368d635de886bacb0bce781b54d560dbbad0bcbb4cc"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#bbc6947081aaf5dbe6d194abbfacd8d6f7287b39da25b1feec8ee78529e29ba7"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#2b8b8898d5e31d8788a86c60952d506471e0ee0c7fc960c90a01436961e60287"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#32240e9d8e909095b1ab61a5ec80330d2256eae5b5d4e012676a3ee62c5d34bb"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#851a2642bac4f6ebc872f4ca1b3c831631da35566024278a0fd97d995416d358"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#03e57154d1c95c4fd83e20a1a748534d2aa8dd11d591dcbee8ee10bd828117b1"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#54e5677041e6e905ff698419f598222b8e48e0ead56c8a2eac319a28a73c86ad"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#03fbd2f3de4df08fc977186a905d117970650d1a239ed052984b3a8b8d45e94c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#d1d282bc8c8373ff2aa14602955ad274bf794f512a88ce196a242960c26f594d"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#fc3b98584797478d837bf3a8301ac9de664dab7656f114ca6abb64c7689abe8c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#e1a5e6096cee75d44a054fa83548b28402ebb090a8dfe7a825d81fd329b2b2f3"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#52a2aac9652c6b20e1a3dc125e618aefbcbf86d404499c216cba73ab3c5d5521"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#68998a13f59b94f25fa55ac11b10aaa13b064cf512b3eede4f83667064a2f578"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#26f818b05c6a26c47f893b2bba920cd0c1a71fbdb15a2840e66afba9fc308482"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#56c5910ad7b8cebd9f09d962ac4cfe90ae2a85d255b7f6dff5499bd0d448203c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#575c88168fe61ca34f1a012730f5cc834b279c23367783746eb6fccaa69651bf"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#0fe028756a57048379cebe9997fff1fb0d7e1f25bdb8de0e6fef1fbf74414971"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#77524a54d7070b03dd85c1e30e34a9f3eadc5d7d9a4492b832c674e219bc1de9"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#171806bb285729166324f5f33c8373ac2f86f02ece1e32c5873d577799ee0e6a"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#103173cc33c28b763f449f8f8f24f4be8b41a57f52c392d8439bc5fda6995c9d"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#77514cd90a096531cf988149dea764e8fb30d5af88e154990e3f6b5879dd8536"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#32703193cd03873c88a412174aeec67b6615cb07b70153887a9e3ffba7330443"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#a8adf1dfcb07bf7fd3ee2eeb0b88d42ecb54a4018313cd6fa83ddd02cf1fa63e"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#d3b4353d8c25c8a3ec869b2d4a08a0d5721f2b2a87f8f341afb1529d16acdfbf"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#7aef9db249f6fdd63cb7696ed4c54ab1befe3cfcfc28d707448132efb06e4bef"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#580e18a035e62139dc95a458c2a68d4002048c2e365db4efb83fb8cbd21601ce"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#3c7b938df42b052172aff8392087ff26fa3a227fad9d43edf31717e05a045aa2"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#0486ac99e23a4482deb1e1500faa71824bb2a2b3d1deac49547a569d83ac7c8e"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#5347390f5e383a072777307dc9ad2227aca549f6bb4c277c39be741ed7dc0d16"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#bd6785ee86c35d6901b9b4080a25bedcb4496ecad3dd5a60908f5b92f57003f3"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#7d1e5c344f0cd0ef43928f6dda07825431293b52e7c6f9526db4265c36dd76bc"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#aa061949d77a274571fe77dfe5eadde8657f7a3cebf7bb61e159c322ffcf8627"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#5936025c5b82a07644c4b7eae8a4d01c61c7c4fa6a51bb3f3f4f5c7cb6f830da"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#eff4f5157a5f6ab03a40f2ce46fed28e75909d195edea31f61da98888456e866"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#d52f2d0b9bbe33d23f12bbe285687665fab4e7cfe49d262c6f96efafaf90dfd1"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#f3b64535d2118a1a29f29a7a4a4caedeeb0038b36f927cb7d5defb26d011222c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#a6add198d0afedf2864e6aa8bdb4daffaf1225d6069c3de0e7b2550098a8cec2"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#06b4dccedbb48e22b5c14f4d4ca8857525b0e78ea8449301a2966294286c582e"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#ec47f876c799e7ed17b3344265e0ce401b3255193901f0ca415c6c014d5de8ce"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#92251a4b6aadf6289c91f3fd7f59be1f5f389dbe7faac061b72fbb2a27972a94"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#92eeb31bfc8df5ae174fe829a1fc9e4514c07748188da0c1e8b2faabe85ffc38"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#0b0888aa21e4020162b49a913538212de0fc093db0885c9f895e585b592c7d60"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#998777ec993a4ba1c84658dadebb299e05497eae0852f62a65b391de4038b54a"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#417b19b0141f165759d31ddab61ac8fddf031daf3fc1091a37ab031747edf5f0"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#3212359b5e1d5fe9a3d33ef138761347004ebe3dec28c2aac19ab128d91b6fa1"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#ea53cd42220248bffeaf17c70e3deba8b046169c2c8421002f288aabbbc21d99"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#0851cf5b13da1852d7997a1e37424cdbde3b5b7980ad50042baae78ef0aed3b6"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#978f2b4980e84543502c90c7b79c2d7682a5d99fb906676300cb6ba59c253cc2"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#3a11ce3c8fcaac9038467ca5c7f4cf2d1ab0d6b4243b737996859f571ba066ed"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#46d425239648d9dcc3cb4d610625961a6aa5b2867cda9a3c8b32de5f3fbfc716"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#purpose": [
+          {
+            "@language": "en",
+            "@value": ""
+          }
+        ],
+        "http://purl.org/dc/terms/title": [
+          {
+            "@language": "en",
+            "@value": "TS(4.0.0)"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#52a2aac9652c6b20e1a3dc125e618aefbcbf86d404499c216cba73ab3c5d5521",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Information on the terms and policies for the establishment and operation of the standardisation organisation is publicly available."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#0486ac99e23a4482deb1e1500faa71824bb2a2b3d1deac49547a569d83ac7c8e",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is licensed on a royalty-free basis."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#998777ec993a4ba1c84658dadebb299e05497eae0852f62a65b391de4038b54a",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification is independent from specific platforms or technologies."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#bd6785ee86c35d6901b9b4080a25bedcb4496ecad3dd5a60908f5b92f57003f3",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard addresses and facilitates interoperability between public administrations."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#3c7b938df42b052172aff8392087ff26fa3a227fad9d43edf31717e05a045aa2",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is licensed on on a proven/well-motivaded non-discriminatory basis."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#92eeb31bfc8df5ae174fe829a1fc9e4514c07748188da0c1e8b2faabe85ffc38",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The risks related to the adoption of the technical specification or standard are acceptable.uestion"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#aa061949d77a274571fe77dfe5eadde8657f7a3cebf7bb61e159c322ffcf8627",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard addresses, facilitates or is an enabler of eGovernment."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#a6add198d0afedf2864e6aa8bdb4daffaf1225d6069c3de0e7b2550098a8cec2",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There is evidence that the adoption of the technical specification or standard makes it easier to migrate between different solutions from different providers."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#a8adf1dfcb07bf7fd3ee2eeb0b88d42ecb54a4018313cd6fa83ddd02cf1fa63e",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard has a defined maintenance organisation."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#011dda3c4b5602a3b73b76236081e89fdb381423bfa620f813324154803f72a1",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard has been used in different industries, business sectors and/or functions."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#ec47f876c799e7ed17b3344265e0ce401b3255193901f0ca415c6c014d5de8ce",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There is evidence that the adoption of the technical specification or standard positively impacts any aspect of the security (e.g. data integrity, data authenticity, data transmission or communications, data preservation, cyber threats, penetration, any other aspect related to the security of the information system or interoperability)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#3a11ce3c8fcaac9038467ca5c7f4cf2d1ab0d6b4243b737996859f571ba066ed",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard addresses backward compatibility with previous versions."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#e1a5e6096cee75d44a054fa83548b28402ebb090a8dfe7a825d81fd329b2b2f3",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The standards definition/development/setting organisation is a non-profit making organisation."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#d1d282bc8c8373ff2aa14602955ad274bf794f512a88ce196a242960c26f594d",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is listed as recommended by at least one Member State or a European institution."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#3212359b5e1d5fe9a3d33ef138761347004ebe3dec28c2aac19ab128d91b6fa1",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is considered mature in the sense that it has overcome most of its initial problems and is considered developed sufficiently (i.e. it fits its purpose)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#171806bb285729166324f5f33c8373ac2f86f02ece1e32c5873d577799ee0e6a",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Information on the standardisation process is publicly available."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#417b19b0141f165759d31ddab61ac8fddf031daf3fc1091a37ab031747edf5f0",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The specification has sufficient completeness and consistency for the use and development of products and services."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#851a2642bac4f6ebc872f4ca1b3c831631da35566024278a0fd97d995416d358",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The adoption of new European standards that cover the same areas as the proposed technical specification or standard is not foreseen."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#580e18a035e62139dc95a458c2a68d4002048c2e365db4efb83fb8cbd21601ce",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The specification is publicly available for implementation and use on reasonable terms."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#54e5677041e6e905ff698419f598222b8e48e0ead56c8a2eac319a28a73c86ad",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The response to the criteria 'b' is 'X' and the existing European standards are becoming obsolete."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#0b0888aa21e4020162b49a913538212de0fc093db0885c9f895e585b592c7d60",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification is independent from specific vendor products."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#978f2b4980e84543502c90c7b79c2d7682a5d99fb906676300cb6ba59c253cc2",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard provides an open source reference implementation."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#7aef9db249f6fdd63cb7696ed4c54ab1befe3cfcfc28d707448132efb06e4bef",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard has a defined policy for version management."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#103173cc33c28b763f449f8f8f24f4be8b41a57f52c392d8439bc5fda6995c9d",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Information on the decision making process for approving the technical specification or standard is publicly available."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#bbc6947081aaf5dbe6d194abbfacd8d6f7287b39da25b1feec8ee78529e29ba7",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The products that implement the technical specification or standard targets a broad spectrum of end-users."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#68998a13f59b94f25fa55ac11b10aaa13b064cf512b3eede4f83667064a2f578",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Participation in the process of definition of the technical specification is open to all interested parties (e.g. organisations, companies or individuals)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#92251a4b6aadf6289c91f3fd7f59be1f5f389dbe7faac061b72fbb2a27972a94",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There is evidence that the adoption of the technical specification or standard positively impacts privacy."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#eb039e3d464cf0ba44a17e0cd28133b478488014463e23a7ca8444b891af26fa",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There are public references (especially policies or in procurement) of the respective specification made by public authorities. "
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#46d425239648d9dcc3cb4d610625961a6aa5b2867cda9a3c8b32de5f3fbfc716",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The underlying technologies for implementing the technical specification or standard have been clearly defined, are stable and have been tested."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#32703193cd03873c88a412174aeec67b6615cb07b70153887a9e3ffba7330443",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The specification has a defined maintenance and support process."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#575c88168fe61ca34f1a012730f5cc834b279c23367783746eb6fccaa69651bf",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Relevant documentation of the development and approval process of the specification is archived and identified."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#77514cd90a096531cf988149dea764e8fb30d5af88e154990e3f6b5879dd8536",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Relevant documentation of the development and approval process of the technical specification or standard is publicly available (e.g. preliminary results, committee meeting notes)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#77524a54d7070b03dd85c1e30e34a9f3eadc5d7d9a4492b832c674e219bc1de9",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Relevant stakeholders can formally appeal or raise objections to the development and approval of specifications."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#d3b4353d8c25c8a3ec869b2d4a08a0d5721f2b2a87f8f341afb1529d16acdfbf",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The maintenance organisation for the technical specification or standard has sufficient finances and resources to ensure its freedom from short- to medium-term threats."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#32240e9d8e909095b1ab61a5ec80330d2256eae5b5d4e012676a3ee62c5d34bb",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard covers areas different from the areas that are already addressed by technical specifications being under consideration to become European standards. (i.e. technical specifications provided by a non-formal standardisation organisation, that is other than CEN, CENELEC or ETSI can be under consideration to become a European standard or alternatively an identified technical specification)"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#0fe028756a57048379cebe9997fff1fb0d7e1f25bdb8de0e6fef1fbf74414971",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "Information on (new) standardisation activities is widely announced through suitable and accessible means."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#03fbd2f3de4df08fc977186a905d117970650d1a239ed052984b3a8b8d45e94c",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is based on one or more relevant international standards."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#7d1e5c344f0cd0ef43928f6dda07825431293b52e7c6f9526db4265c36dd76bc",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The adoption of the technical specification or standard positively impacts on one or several of the following: organisational processes; the environment; the administrative burden; the disability support; cross-border services, public policy objectives and societal needs."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#eff4f5157a5f6ab03a40f2ce46fed28e75909d195edea31f61da98888456e866",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is applicable and extensible for implementations in different domains."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#fc3b98584797478d837bf3a8301ac9de664dab7656f114ca6abb64c7689abe8c",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is listed as mandatory by at least one Member State or a European institution."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#d36837f06241cc1cee0ce581ee3a8c36c4117d84fa7aea1308317d146b749220",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard has been used for different implementations by different vendors/suppliers."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#5936025c5b82a07644c4b7eae8a4d01c61c7c4fa6a51bb3f3f4f5c7cb6f830da",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The functional and non-functional requirements for the use and implementation of the technical specification or standard are clearly defined."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#0851cf5b13da1852d7997a1e37424cdbde3b5b7980ad50042baae78ef0aed3b6",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard provides implementation guidelines and documentation for the implementation of products."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#fd2f9ea68253706e5f50ec9c1887c6f15e6364e047ac1f0269bde25e4f11aab2",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The implementation of the technical specification or standard does not hamper interoperability with implementations that are currently based on existing European or international standards."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#5347390f5e383a072777307dc9ad2227aca549f6bb4c277c39be741ed7dc0d16",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The documentation of the IPR for technical specification or standard is publicly available (there is a clear and complete set of licence terms)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#d52f2d0b9bbe33d23f12bbe285687665fab4e7cfe49d262c6f96efafaf90dfd1",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard provides added value compared to alternative technical specifications or standards in the same area of application."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#06b4dccedbb48e22b5c14f4d4ca8857525b0e78ea8449301a2966294286c582e",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There is evidence that the adoption of the technical specification or standard positively impacts the financial costs."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#26f818b05c6a26c47f893b2bba920cd0c1a71fbdb15a2840e66afba9fc308482",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The technical specification or standard is reviewed using a formal review process involving all the relevant external stakeholders (e.g. public consultation)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#821093d41a41f283e0401368d635de886bacb0bce781b54d560dbbad0bcbb4cc",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "The products that implement the technical specification or standard has a certain or even significant market share of adoption."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#ea53cd42220248bffeaf17c70e3deba8b046169c2c8421002f288aabbbc21d99",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There are existing or planned mechanisms to assess conformity of the implementations of the technical specification or standard (e.g. conformity tests, certifications)."
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/scenarios#03e57154d1c95c4fd83e20a1a748534d2aa8dd11d591dcbee8ee10bd828117b1",
+        "@type": [
+          "http://data.europa.eu/m8g/cccev#Criterion",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/m8g/cccev#hasDescription": [
+          {
+            "@language": "en",
+            "@value": "There are no existing European standards with market uptake that cover the same areas as the proposed technical specification or standard being assessed."
+          }
+        ]
+      }
+    ],
+    "@id": "http://data.europa.eu/2sa/scenarios#"
+  }
+]

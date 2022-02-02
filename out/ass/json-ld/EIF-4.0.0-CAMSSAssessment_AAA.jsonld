@@ -1,0 +1,1593 @@
+[
+  {
+    "@graph": [
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/c95c8d46-a822-43c0-ab77-e6a56b042cf5",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/22aa7460-5509-46a8-8432-009aa24f0474"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/dcb18c63-80c1-438a-b973-21ccbb8cefb1",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-21276471c1781fa2c7e78c8e03851e076b840beddbf5cf64f53b54b8855a01b8"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/e03583a3-a4d9-4328-abb9-45d00bd9e455",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/675d8495-c8df-4626-ae6f-cba133c97774"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/8d2fc6f1-e6e8-44a3-b267-8160ed42d1d8",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/0c3273c5-e0e9-4b4a-aae6-e2a9146444e6"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/a5efaad5-0548-44f8-8dec-0d69f4ed8a00",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/d5f0ec16-c179-47ea-938e-d9b427ba443f"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/20a1b246-abdc-4728-95f6-899da3a602c6",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-c265ca0c56e0f29a34039d496ba707b5486ccf6d445f9f058c19b4ece977861f"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/57d92c11-abdf-4ef6-b845-4eb80a2508d9",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-8a34a40e5bc5436b3530d898d75a57cf0488591887b31a5169499fe78952d84c"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/76f2d6d4-68bc-4ba5-9c78-d395e665a226",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/39c8e9f2-baf8-4647-9d76-23487d3589c8"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/2ae8ba47-9fbd-446e-819d-dc5346d33b83",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/09e13547-4e64-41af-983a-615db01f7921"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/3239c1fc-454c-4996-816d-830f3a0810b0",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/d110a6e9-9512-4820-a818-96c4cf9fc394"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/58a52021-7e33-44ff-98fe-9d14e3edc0b4",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-8eb17470327d32b3bb523447fe72ee5c60ddb03e81dae318b485fbe05f48a844"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/e03b3248-94c2-492b-9a7a-45ef3eb4509c",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "AA"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/58a52021-7e33-44ff-98fe-9d14e3edc0b4"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/c6228f92-160e-44dd-97ed-abf2836cf698",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "nan"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/2692fe82-ea0d-48c6-a20c-fe1a1eef68e4"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/c61e8eba-e634-47a8-aaa6-46a727783e42",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-d129862d6c9639e131c7d5eef095af16ef94d57ec0d52f955bf909ba8ec688e8"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/a66fc16f-dffa-4444-bf27-ebaa42fc433f",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-c967c90bfc7bc13426924eca012de349ae51d4e8f652fe64bfbec2cccc8c8146"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/bcfea545-a4a8-411b-a562-86f77a39b6d0",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/4ecd8992-ae35-4cda-9672-0e97ccb4d8e4"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/2b3dc8a7-4263-41ae-807d-468f9f14cbe9",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-7aa038b5496afb8cb229c692be9a2adc175deb2d5d47e35ad67e027c9eac28ba"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/139e1529-31a6-4048-a03a-4e0e4b37f3b3",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/68c0e348-66c6-4af3-9bfd-ecb83169bb91"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/39c8e9f2-baf8-4647-9d76-23487d3589c8",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-b6ba3f2f556446c68c55833e72b217be87ad5f0dd07744e2c39c6070aff6c10f"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/bf1fb774-f89b-4868-8d72-02521e3574e1",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-d7cb8fa1b2e426f9a7a3044cc57fe28fd955bdc53616c93ed8ddbd85ee02128d"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/c9e5d54f-cb50-4a0d-83ff-ba662071673c",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-5df7a9f6081c945a22f500aa0ba2c452b8b9cd9497bd643ac76c39d34a18c319"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/2499a129-0f2e-45bb-8e3f-31f7025dcb9a",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/16cb3c54-928f-4d75-b05b-af7a04b4c7da"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/d5f0ec16-c179-47ea-938e-d9b427ba443f",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-fef5941bab92019b7692f8544de94715a42ed9ff76d89cbec4fb6f9821611925"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/675d8495-c8df-4626-ae6f-cba133c97774",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-8c09094de9d71f12686896827a205db683b6df58fa363bc5be2a7d99989e7dd0"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/db97400d-58bb-45c1-a16d-ca553c811107",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/ab004007-7532-4222-b389-04abc665c689"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/907d0392-3350-4cd2-98f1-aa3649ee1ac9",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-53abe85b1365f86aa58a25566e54e082ea2d70ee8d9fbaf09ccab20af30f3332"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/f497fb00-859e-47a4-8c64-7aa43d3fd740",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/fdac0be2-58dd-48aa-9f94-3cae61163ff3"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/5cd3fc3c-7686-4ef3-a776-0abdf15f6cdf",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-26bfe1ba6218ec8ffaab807379cb09e4ec1e7fd88e5e2cd4e8fd3b7edd0b02d1"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/0f772813-d0a9-4ce5-a894-50f40fd58806",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/57d92c11-abdf-4ef6-b845-4eb80a2508d9"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/22aa7460-5509-46a8-8432-009aa24f0474",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-138786a6e7517e10b94e83ec3b3e7ac79b4c49dcbeaef8d8e993c8df0d173529"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/69ca3295-67b4-4a1d-b466-4c95f1525666",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/fc610bc0-cdef-45ae-9c9e-f5f9a26147b9"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/a9522a54-df39-4d46-a0f1-c783b4fd3e45",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-ab64f97c21ac8b84c75d6f52a89765b1c8fd1856d2d2060926d05e94f306a88d"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/826eb51c-4d6d-4647-8554-4197317326aa",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-ba46c76c10ad769a23ce4a9a34cb4d96a00407d5fc14ad1c791a870be7563c2b"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/9dbf53e4-1081-42e3-b101-0e7e64d01946",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-cc5bd9a7d0b2acc7f246522414fd5f5d579b977180bb04fa60a545cb35dae90f"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "0"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/45494930-33b9-4918-bb65-83ee2667d319",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/c9e5d54f-cb50-4a0d-83ff-ba662071673c"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/816c24e2-636d-4158-bdbe-85c824779d9e",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/bf1fb774-f89b-4868-8d72-02521e3574e1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/21da8fd3-5579-485a-a8e8-d9c6ca83ece7",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "nan"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/5cd3fc3c-7686-4ef3-a776-0abdf15f6cdf"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/8cf1267b-c889-4254-a2c5-68ad1cb9af7c",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-b21a3eb972a2119979bc57368474efa809e8dd16cede48bc492e8b64da1abee9"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/1070bd5a72c64677dcadc175769b9a8f6464c14119a6caf95696a38f9076d4d5",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Assessment",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#contextualisedBy": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#be4cc84da5c7bd3567eb0d8b9a08471f38c0034f8bcf505d500e62acfe01dac4"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#resultsIn": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/e03b3248-94c2-492b-9a7a-45ef3eb4509c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/76f2d6d4-68bc-4ba5-9c78-d395e665a226"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/21da8fd3-5579-485a-a8e8-d9c6ca83ece7"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/a6b9e6aa-9191-45b9-b71f-61a10b4cbedc"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/8d2fc6f1-e6e8-44a3-b267-8160ed42d1d8"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/08ad6a12-275a-4a43-845a-e60bfc5d4260"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/c6228f92-160e-44dd-97ed-abf2836cf698"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/db97400d-58bb-45c1-a16d-ca553c811107"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/a0205448-7f4f-4be1-8bbf-1370624d3ac6"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/2da2ddd8-1399-4920-a215-ea0aa81fe606"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/403c6f70-fc37-4874-b287-18470b96fc99"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/69ca3295-67b4-4a1d-b466-4c95f1525666"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/53423461-f48d-4f1b-a383-ed60e7d0836f"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/0ffeb4d8-ba71-49d5-b168-5ed04bbad387"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/816c24e2-636d-4158-bdbe-85c824779d9e"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/f497fb00-859e-47a4-8c64-7aa43d3fd740"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/53628845-699e-4a40-98ee-1b30fa9adedb"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/ab4fc1d7-362e-40fc-ad9d-5d8b95417126"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/8682c2a1-05ba-4387-b7fa-8acfab44ea5c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/0729acc9-972f-40c0-929e-aedd8f217dc9"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/3239c1fc-454c-4996-816d-830f3a0810b0"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/a5efaad5-0548-44f8-8dec-0d69f4ed8a00"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/796e7053-1a33-49a6-a622-5b7a5b725f7c"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/93f68c5c-cfdb-4002-82eb-4a8504d6af75"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/b4b3c153-1f20-4c96-81ee-819e43dd1dd3"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/0f772813-d0a9-4ce5-a894-50f40fd58806"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/70194fb8-ca16-41ee-9bca-592fa89b0408"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/747d7b93-f380-4c18-a0b2-76c464c373df"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/d5369f0c-fe2c-4b72-8810-297531980f26"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/e03583a3-a4d9-4328-abb9-45d00bd9e455"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/139e1529-31a6-4048-a03a-4e0e4b37f3b3"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/616edbf3-fa79-4084-a69f-8d0ad5fd5baf"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/2499a129-0f2e-45bb-8e3f-31f7025dcb9a"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/45494930-33b9-4918-bb65-83ee2667d319"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/b46593c4-0910-4297-9f55-1e87ab1eb966"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/37eee627-eb60-41c0-926d-75d91442b4cd"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/bcfea545-a4a8-411b-a562-86f77a39b6d0"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/2ae8ba47-9fbd-446e-819d-dc5346d33b83"
+          },
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/c95c8d46-a822-43c0-ab77-e6a56b042cf5"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#status": [
+          {
+            "@id": "http://data.europa.eu/2sa/rsc/assessment-status#Complete"
+          }
+        ],
+        "http://data.europa.eu/2sa/ontology#assesses": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/cb1ad2119d8fafb69566510ee712661f9f14b83385006ef92aec47f523a38358"
+          }
+        ],
+        "http://data.europa.eu/2sa/ontology#assessmentDate": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#date",
+            "@value": "None"
+          }
+        ],
+        "http://data.europa.eu/2sa/ontology#submissionDate": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#date",
+            "@value": "None"
+          }
+        ],
+        "http://purl.org/dc/terms/title": [
+          {
+            "@language": "en",
+            "@value": "AAA"
+          }
+        ],
+        "http://www.w3.org/2001/XMLSchema#toolVersion": [
+          {
+            "@id": "http://data.europa.eu/2sa/rsc/toolkit-version#4.0.0"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/ab4fc1d7-362e-40fc-ad9d-5d8b95417126",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/1bc9c4e7-d843-4f88-ae56-20421871b632"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/403c6f70-fc37-4874-b287-18470b96fc99",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/8cf1267b-c889-4254-a2c5-68ad1cb9af7c"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/a1d54815-ecfa-4401-ab2d-ef9b02533f7e",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-4ac14cafe608f1dbe7e48f96edd7574c55f0aac2c2e99ede0418dae7225977af"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/c3ecbbab-38e6-440e-8c9a-0852ac17989b",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-17bea234285e6e633e4e21105358610ad5f5f0eaaf82f4bd50cb64ec11538984"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/68c0e348-66c6-4af3-9bfd-ecb83169bb91",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-39ffef052c31580b50b418f3991e9de7db4dc182fcf96f5a447d7f8e09560612"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/f1abeaa9-f2b3-4a94-b74c-e683d0da6d52",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-33ea90f5c1bb01d4398c57d03a25934dc5722d5ddbc98a43911ea4fb302ec54c"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/08ad6a12-275a-4a43-845a-e60bfc5d4260",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "nan"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/547121bb-92e8-4747-8a49-e70a845b9c67"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/1bc9c4e7-d843-4f88-ae56-20421871b632",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-5879b43fc249f0098f3ed687235f432f71bf0c11bd3aa95e063dfdacd64606c8"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/2692fe82-ea0d-48c6-a20c-fe1a1eef68e4",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-33e7edcbebbce501e6d903359fb2d70a8b7071cd0ff07998a41c336e4bb1b3d9"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/796e7053-1a33-49a6-a622-5b7a5b725f7c",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/f285f5a9-322b-4dac-aff1-bf116853304b"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/b685055a-498d-4e09-bd8a-c3c46494c9af",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-838030847fa0adf54939e3feaac0ac2510924c54035e1cb671b223b54b02fd70"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/d5369f0c-fe2c-4b72-8810-297531980f26",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/a66fc16f-dffa-4444-bf27-ebaa42fc433f"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/0ffeb4d8-ba71-49d5-b168-5ed04bbad387",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/f1abeaa9-f2b3-4a94-b74c-e683d0da6d52"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/616edbf3-fa79-4084-a69f-8d0ad5fd5baf",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/b685055a-498d-4e09-bd8a-c3c46494c9af"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/ab004007-7532-4222-b389-04abc665c689",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-6bedf555bffb837990b9eb353447fa116eb9d2384770b1dd3de46d3c5901d4f4"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/8682c2a1-05ba-4387-b7fa-8acfab44ea5c",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/826eb51c-4d6d-4647-8554-4197317326aa"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/93f68c5c-cfdb-4002-82eb-4a8504d6af75",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/a1d54815-ecfa-4401-ab2d-ef9b02533f7e"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/4ecd8992-ae35-4cda-9672-0e97ccb4d8e4",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-6d48464387e608d3022bd07338cd3859acfb0f84139186a979ef3b96baa51086"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/a0205448-7f4f-4be1-8bbf-1370624d3ac6",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/c61e8eba-e634-47a8-aaa6-46a727783e42"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/53423461-f48d-4f1b-a383-ed60e7d0836f",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/434e6f14-7c21-4335-b91c-21bd3727a14d"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/53628845-699e-4a40-98ee-1b30fa9adedb",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/c3ecbbab-38e6-440e-8c9a-0852ac17989b"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/f84e8d3c-2f81-4c9a-9648-3e26f2f47892",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-ffdbd22af1ff3c1ebb100043d062a3df160007af761caf0a8c9f50f02e609c9e"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/1a7e41b3-e4ed-427a-9cd2-ca25b284bc57",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-7d28663fdb5deb361d5ad773d7b7ece3c6acf8d2eb7a1222a60cb08df4c93aac"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/70194fb8-ca16-41ee-9bca-592fa89b0408",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/9dbf53e4-1081-42e3-b101-0e7e64d01946"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/d110a6e9-9512-4820-a818-96c4cf9fc394",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-624bc49501d58649e27cae4fb89fb5a56844685e54c5ce1625633894f8f752e1"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/fc610bc0-cdef-45ae-9c9e-f5f9a26147b9",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-19598487b8ba278c3438dcfd74b74d9aad51beac08c53dbf40bf108ed09e72b2"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "http://data.europa.eu/2sa/ontology#ContactPoint": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/b9265ca5-43dc-4553-a9d5-1dd00e9be76f"
+          }
+        ],
+        "http://www.w3.org/2004/02/skos/core#prefLabel": [
+          {
+            "@language": "en",
+            "@value": "nan Test"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/b46593c4-0910-4297-9f55-1e87ab1eb966",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/907d0392-3350-4cd2-98f1-aa3649ee1ac9"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/434e6f14-7c21-4335-b91c-21bd3727a14d",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-7ab883158b51681c78f90d1a00bbb3840aa2c86e309a9abd1ad6e6eedb5e2735"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/a6b9e6aa-9191-45b9-b71f-61a10b4cbedc",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "nan"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/2b3dc8a7-4263-41ae-807d-468f9f14cbe9"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/09e13547-4e64-41af-983a-615db01f7921",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-8954ddabf37f4899562b9ea4c8f0bbf204f3e48c9203043bc231f368092396a2"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/fdac0be2-58dd-48aa-9f94-3cae61163ff3",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-c2cedd44f05183dae5548108bdeace2c092b84c7c5d89c475b0741ddae7fc7b2"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/747d7b93-f380-4c18-a0b2-76c464c373df",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "a"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/1a7e41b3-e4ed-427a-9cd2-ca25b284bc57"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/0c3273c5-e0e9-4b4a-aae6-e2a9146444e6",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-31bf959b6c4a983ec70eb87e0177f2739575ebce42c7c3b95b9012ef3bfe673e"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/b4b3c153-1f20-4c96-81ee-819e43dd1dd3",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/f84e8d3c-2f81-4c9a-9648-3e26f2f47892"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/2da2ddd8-1399-4920-a215-ea0aa81fe606",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/dcb18c63-80c1-438a-b973-21ccbb8cefb1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/f285f5a9-322b-4dac-aff1-bf116853304b",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-483e8900c47b40bc67a6bd1cbfce07884b9ac5f2c85e0214f334cc37e4e65c35"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/547121bb-92e8-4747-8a49-e70a845b9c67",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-420fe58579ca22acc62d3207c992010ba40e2c2b2feaa19a14f970ec079614b4"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/16cb3c54-928f-4d75-b05b-af7a04b4c7da",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Score",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#assignedTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/scenarios#c-7a18abe4842e04b608025fd70e54c3db5c2a10130c0dab0495479e7d5effb55d"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#value": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#int",
+            "@value": "1"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/0729acc9-972f-40c0-929e-aedd8f217dc9",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "AA"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/a9522a54-df39-4d46-a0f1-c783b4fd3e45"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/assessments/37eee627-eb60-41c0-926d-75d91442b4cd",
+        "@type": [
+          "http://data.europa.eu/2sa/cav#Statement",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cav#judgement": [
+          {
+            "@language": "en",
+            "@value": "A"
+          }
+        ],
+        "http://data.europa.eu/2sa/cav#refersTo": [
+          {
+            "@id": "http://data.europa.eu/2sa/assessments/20a1b246-abdc-4728-95f6-899da3a602c6"
+          }
+        ]
+      }
+    ],
+    "@id": "http://data.europa.eu/2sa/assessments/"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "@graph": [
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/3ed0b006-0719-40f7-8729-9a4da68b2c6d",
+        "@type": [
+          "http://schema.org/ContactPoint",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cssv#isContactPointOf": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/f45f6c8ef56563dd5fe289d6817c3a398df2a29fc9fad70d5114d6a5a1fa3815"
+          }
+        ],
+        "http://schema.org/email": [
+          {
+            "@value": "nan"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/cb1ad2119d8fafb69566510ee712661f9f14b83385006ef92aec47f523a38358",
+        "@type": [
+          "http://data.europa.eu/2sa/cssv#Standard",
+          "http://www.w3.org/2002/07/owl#NamedIndividual"
+        ],
+        "http://data.europa.eu/2sa/cssv#isMaintainedBy": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/f45f6c8ef56563dd5fe289d6817c3a398df2a29fc9fad70d5114d6a5a1fa3815"
+          }
+        ],
+        "http://purl.org/dc/terms/title": [
+          {
+            "@language": "en",
+            "@value": "AAA"
+          }
+        ],
+        "http://www.w3.org/ns/dcat#distribution": [
+          {
+            "@id": "http://data.europa.eu/2sa/cssv/rsc/c55b60a6-34f5-44c1-89ca-1d544f248de6"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/f45f6c8ef56563dd5fe289d6817c3a398df2a29fc9fad70d5114d6a5a1fa3815",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "http://www.w3.org/2004/02/skos/core#prefLabel": [
+          {
+            "@value": "W3C (https://www.w3.org)"
+          }
+        ]
+      },
+      {
+        "@id": "http://data.europa.eu/2sa/cssv/rsc/c55b60a6-34f5-44c1-89ca-1d544f248de6",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#NamedIndividual",
+          "http://www.w3.org/ns/dcat#Distribution"
+        ],
+        "http://www.w3.org/ns/dcat#accessURL": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "@value": "AAA"
+          }
+        ]
+      }
+    ],
+    "@id": "http://data.europa.eu/2sa/cssv/rsc/"
+  }
+]
