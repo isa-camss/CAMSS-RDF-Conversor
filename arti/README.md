@@ -1,7 +1,7 @@
 # <center>CAMSS Utilities</center>
 ## <center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center>
 ### <center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Tools</center>
-<center><img src="img/CAMSS Logo landscape"/></center>
+<center><img src="../img/CAMSS Logo landscape"/></center>
 <center>European Commission, ISA2 Programme, DIGIT</center>
 <center><a href="mailto:camss@everis.com">camss@everis.nttdata.com</a></center>
 <center><a href="https://joinup.ec.europa.eu/collection/eupl/about">UPL Licence</a><center>
