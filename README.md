@@ -1,12 +1,15 @@
 # <center>CAMSS Utilities</center>
 ## <center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center>
 ### <center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Tools</center>
-<center><img src="./doc/art/CAMSS Logo landscape"/></center>
+<center><img src="./img/CAMSS Logo landscape"/></center>
 <center>European Commission, ISA2 Programme, DIGIT</center>
 <center><a href="mailto:camss@everis.com">camss@everis.nttdata.com</a></center>
 <center><a href="https://joinup.ec.europa.eu/collection/eupl/about">UPL Licence</a><center>
 <center>Build 20220118T18:00</center>
 <center>Version 1.2</center>
+
+<h2>Folder setup</h2><br>
+See instructions in arti README.md.
 
 <h2>Notebook setup</h2><br>
 The camssXLS2RDF tool is a code adaptation of the previous Transformation utility (https://github.com/isa-camss/CAMSS-Ontology/blob/master/util/py/README.md).
@@ -14,11 +17,11 @@ The camssXLS2RDF tool is a code adaptation of the previous Transformation utilit
 Install requirements.txt by opening the cmd. Then, type 'cd' and copy paste the 'RDFconversor' filepath in the command line:
 
 Example with the user 'WindowsUSER':
-C:\Users\WindowsUSER> cd Downloads/RDFconversor
+C:\Users\WindowsUSER> cd path_to/RDFconversor
 
 Finally, type the following command:
 
-C:\Users\WindowsUSER> pip install -r requirements.txt
+C:\Users\WindowsUSER\path_to\RDFconversor> pip install -r requirements.txt
 
 
 <h2>How can I use this notebook?</h2><br>

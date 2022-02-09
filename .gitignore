@@ -137,3 +137,11 @@ idea/
 /idea
 
 # DOC
+arti/**/*.csv
+arti/**/*.xls
+arti/**/*.xlsx
+arti/**/*.ods
+arti/**/*.txt
+arti/**/*.nq
+arti/**/*.ttl
+arti/**/*.jsonld
