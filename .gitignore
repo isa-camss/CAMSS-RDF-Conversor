@@ -137,11 +137,3 @@ idea/
 /idea
 
 # DOC
-dev/**/*.pdf
-dev/**/*.txt
-dev/**/*.rdf
-dev/**/*.dmg
-dev/**/*.pkl
-dev/**/*.ttl
-dev/**/*.csv
-dev/**/*.trig
