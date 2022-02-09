@@ -14,6 +14,7 @@ import rdflib
 from rdflib import Namespace
 from tqdm.auto import tqdm
 from time import sleep
+import urllib
 
 
 # from rdflib import URIRef, Literal, Namespace, Graph
@@ -53,10 +54,15 @@ class Assessments:
         """
         Takes the EU Survey output file name and extracts the scenario.
         """
-        pattern = re.compile(r'(\d*)-([A-Za-z][A-Za-z][A-Za-z]?)Scenario')
+        pattern1 = re.compile(r'(\d*)-([A-Za-z][A-Za-z][A-Za-z]?)Scenario')
+        pattern2 = re.compile(r'([A-Za-z][A-Za-z][A-Za-z]?)Scenario_v(\d*)')
         scenario = str(self.ass_df.loc[0, 1]).strip()
-        sc = pattern.search(scenario)
-        return sc.group(2)
+        sc1 = pattern1.search(scenario)
+        sc2 = pattern2.search(scenario)
+        if sc1:
+            return sc1.group(2)
+        elif sc2:
+            return sc2.group(1)
 
     def get_scenario_full(self):
         """
@@ -74,11 +80,17 @@ class Assessments:
         """
         Takes the EU Survey output file name and extracts the Tool version.
         """
-        pattern = re.compile(r'(\d*)-([A-Za-z][A-Za-z][A-Za-z]?)Scenario')
-        vrs = str(self.ass_df.loc[0, 1]).strip()
-        vrs = pattern.search(vrs)
-        vrs = re.split(r'(\w)', vrs.group(1))[1:-1]
-        return ".".join([el for el in vrs if el != ''])
+        pattern1 = re.compile(r'(\d*)-([A-Za-z][A-Za-z][A-Za-z]?)Scenario')
+        pattern2 = re.compile(r'([A-Za-z][A-Za-z][A-Za-z]?)Scenario_v(\d*)')
+        scenario = str(self.ass_df.loc[0, 1]).strip()
+        vrs1 = pattern1.search(scenario)
+        vrs2 = pattern2.search(scenario)
+        if vrs1:
+            vrs1 = re.split(r'(\w)', vrs1.group(1))[1:-1]
+            return ".".join([el for el in vrs1 if el != ''])
+        elif vrs2:
+            vrs2 = re.split(r'(\w)', vrs2.group(2))[1:-1]
+            return ".".join([el for el in vrs2 if el != ''])
 
     def get_date(self):
         """
@@ -124,6 +136,7 @@ class Extractor:
     ass_date: str  # the assessment submission date (string type)
     ass_dict: dict  # the assessment data (dictionary type)
     criteria: list  # the assessment criteria (list type)
+    gradients: dict
 
     def __init__(self, ass: Assessments, row: int):
         """
@@ -142,6 +155,7 @@ class Extractor:
         self.ass_title = str()  # the title of the specification being assessed
         self.criteria: list = []  # generates the list which will store the criteria
         self.ass_dict: dict = {}  # generates the dictionary which will store the data of the current assessment
+        self.gradients = self.import_gradients()
         # criteria extraction from the current assessment
         if self.scenario == 'EIF':
             self._get_criteria_EIF()
@@ -183,12 +197,23 @@ class Extractor:
         if o == 'yes':
             return 1
         elif o == 'no':
+            return -1
+        elif o == "not answered":
+            return -1
+        elif o == "not applicable":
             return 0
-        else:
-            return 2
+
+    def import_gradients(self):
+        self.gradients = {}
+        with open('gradients_EIFv5.csv', 'r') as file:
+            for line in file:
+                line = line.strip("\n")
+                line = line.split("\t")
+                self.gradients[line[0].lower()] = line[1]
+        return self.gradients
 
     @staticmethod
-    def _new_yesno_choice(option: str) -> int:
+    def _new_yesno_choice(option: str, grd: dict) -> int:
         """
         Transforms the submitter response into a percentage system, according to the EIF scenario version 5, for YES/NO-oriented responses.
         :param option: the string YES, NO, or N/A
@@ -199,10 +224,11 @@ class Extractor:
             return 100
         elif o == 'no':
             return 20
-        elif o == "not answered":
-            return 0
-        elif o == "not applicable":
-            return 100
+        elif 0 == '':
+            return
+        else:
+            if o in grd.keys():
+                return grd[o]
 
     @staticmethod
     def _gradient_scale_choice(option: str) -> int:
@@ -277,12 +303,12 @@ class Extractor:
             self.ass_dict['status'] = None  # to review
             # the specification elements
             self.ass_dict['title'] = {}  # a new dictionary in the dictionary
-            self.ass_title = self.ass_.loc[self.row, 8]  # title of the specification
+            self.ass_title = self.ass_.loc[self.row, 9]  # title of the specification
             self.ass_dict['title']['P1'] = self.ass_title  # title of the specification
             self.ass_dict['title']['spec_id'] = sha256(
                 str(self.ass_dict['title']['P1']))  # the specification identifier, the MD5 of the title
             self.ass_dict['title']['distribution_id'] = str(uuid.uuid4())  # distribution_id
-            self.ass_dict['title']['P2'] = self.ass_.loc[self.row, 9]  # spec_download_url
+            self.ass_dict['title']['P2'] = self.ass_.loc[self.row, 12]  # spec_download_url
             # organization
             self.ass_dict['organization'] = {}  # a new dictionary in the dictionary
             self.ass_dict['organization']['L1'] = self.ass_.loc[self.row, 1]  # Submitter_name
@@ -299,19 +325,19 @@ class Extractor:
             self.ass_dict['organization']['uuid'] = uuid.uuid4()  # organization contact point uuid (?)
             # agent, SDO
             self.ass_dict['agent'] = {}  # a new dictionary in the dictionary
-            self.ass_dict['agent']['P3'] = self.ass_.loc[self.row, 10]  # sdo_name
+            self.ass_dict['agent']['P3'] = self.ass_.loc[self.row, 13]  # sdo_name
             self.ass_dict['agent']['sdo_id'] = sha256(
                 str(self.ass_dict['agent']['P3']))  # sdo_id (for the Agent instance)
-            self.ass_dict['agent']['P4'] = self.ass_.loc[self.row, 12]  # sdo_contact_point
+            self.ass_dict['agent']['P4'] = self.ass_.loc[self.row, 16]  # sdo_contact_point
             self.ass_dict['agent']['uuid'] = uuid.uuid4()  # agent contact point uuid (?)
             # submission_rationale
             self.ass_dict['P5'] = None  # submission_rationale
             # 'other_evaluations'
-            self.ass_dict['P6'] = self.ass_.loc[self.row, 14]  # other_evaluations
+            self.ass_dict['P6'] = self.ass_.loc[self.row, 18]  # other_evaluations
             # 'considerations'
             self.ass_dict['C1'] = None  # correctness
             self.ass_dict['C2'] = None  # completeness
-            self.ass_dict['C3'] = self.ass_.loc[self.row, 15]  # egov_interoperability
+            self.ass_dict['C3'] = self.ass_.loc[self.row, 19]  # egov_interoperability
             # 'io_spec_type'
             self.ass_dict['io_spec_type'] = None  # interoperability specification type
             # additional features
@@ -448,7 +474,7 @@ class Extractor:
         return
 
     def criterion_char_range(self, s: str):
-        pattern = re.compile(r'((A\d*?)( \w)?) ?-( )?')
+        pattern = re.compile(r'((A\d*?)\(?( ?\w)?)\)? ?-( )?')
         rg = pattern.search(s.strip())
         char_rg = list(rg.span())
         criterion_name = rg.group(1)
@@ -462,9 +488,9 @@ class Extractor:
                 Builds a vector with groups of criteria
                 :return: nothing, values are kept into a class-scoped vector
                 """
-        column = 17
+        column = 21
         column_step = 2
-        for i in range(1, 40):
+        for i in range(1, 45):
             criterion_elements = self.criterion_char_range(str(self.ass_.loc[3, column]))
             criterion_name = criterion_elements[1]
             char_rg = criterion_elements[0]
@@ -478,12 +504,12 @@ class Extractor:
             criterion.append(criterion_description)
             # Score element ID and Value
             criterion.append(str(uuid.uuid4()))
-            criterion.append(self._yesno_choice(str(self.ass_.loc[self.row, column])))
+            criterion.append(self._new_yesno_choice(str(self.ass_.loc[self.row, column]), self.gradients))
             # Criterion Justification Id and Judgement text
             criterion.append(str(uuid.uuid4()))
             criterion.append(self.ass_.loc[self.row, column + 1])
             self.criteria.append(criterion)
-            if column in [21, 25, 31, 35]:
+            if column in [27, 31, 37]:
                 column = column + column_step + 2
             else:
                 column += column_step
@@ -928,37 +954,39 @@ def convert_graph_to(target: str):
     elif target.lower() == 'json-ld':
         target = 'json-ld'
         extension = 'jsonld'
-    try:
-        for files_root in ['out/ass/nq/', 'out/crit/nq/', 'out/specs/nq/']:
-            # Creating a list of filenames
-            filenames = get_files(files_root, exclude=['ttl', 'json-ld'])
-            for file in filenames:
-                head = file[:-3]
-                new_file = files_root.split("/")
-                new_file.remove('nq')
-                new_file.remove('')
-                new_dir = '/'.join(new_file) + f'/{target}/'
-                os.makedirs(new_dir, exist_ok=True)
-                g = rdflib.ConjunctiveGraph()
-                data = open(files_root + file, 'rb')
-                g.parse(data, format='nquads')
-                if target == 'ttl':
-                    g = declare_namespace(g)
-                g.serialize(format=target, destination=new_dir + head + '.' + extension)
-        for files_root in ['out/ass/', 'out/crit/', 'out/specs/']:
-            # Creating a list of filenames
-            filenames = get_files(files_root, exclude=['nq', 'ttl', 'json-ld', 'ass-graph.jsonld', 'specs-graph.jsonld', 'crit-graph.jsonld', 'ass-graph.ttl', 'specs-graph.ttl', 'crit-graph.ttl'])
-            for file in filenames:
-                head = file[:-3]
-                g = rdflib.ConjunctiveGraph()
-                data = open(files_root + file, 'rb')
-                g.parse(data, format='nquads')
-                if target == 'ttl':
-                    g = declare_namespace(g)
-                g.serialize(format=target, destination=files_root + head + '.' + extension)
-        print('Transformation Done!')
-    except:
-        pass
+    #try:
+    for files_root in ['out/ass/nq/', 'out/crit/nq/', 'out/specs/nq/']:
+        # Creating a list of filenames
+        filenames = get_files(files_root, exclude=['ttl', 'json-ld'])
+        for file in filenames:
+            head = file[:-3]
+            new_file = files_root.split("/")
+            new_file.remove('nq')
+            new_file.remove('')
+            new_dir = '/'.join(new_file) + f'/{target}/'
+            os.makedirs(new_dir, exist_ok=True)
+            g = rdflib.ConjunctiveGraph()
+            data = open(files_root + file, 'rb')
+            urllib.urlencode(data)
+            #urllibe.irldecode(data)
+            g.parse(data, format='nquads')
+            if target == 'ttl':
+                g = declare_namespace(g)
+            g.serialize(format=target, destination=new_dir + head + '.' + extension)
+    for files_root in ['out/ass/', 'out/crit/', 'out/specs/']:
+        # Creating a list of filenames
+        filenames = get_files(files_root, exclude=['nq', 'ttl', 'json-ld', 'ass-graph.jsonld', 'specs-graph.jsonld', 'crit-graph.jsonld', 'ass-graph.ttl', 'specs-graph.ttl', 'crit-graph.ttl'])
+        for file in filenames:
+            head = file[:-3]
+            g = rdflib.ConjunctiveGraph()
+            data = open(files_root + file, 'rb')
+            g.parse(data, format='nquads')
+            if target == 'ttl':
+                g = declare_namespace(g)
+            g.serialize(format=target, destination=files_root + head + '.' + extension)
+    print('Transformation Done!')
+    #except:
+    #    pass
 
 
 def slash(path) -> str:
@@ -1006,10 +1034,11 @@ def __pipeline__(input_folder: str):
     Origin: camss.py
     ################
     """
-    if not input_folder or len(input_folder) == 0:
-        __help__()
-        return
-    __extract_file_assessments__(input_folder, get_files(input_folder))
+    for path in glob.iglob(input_folder + '/**', recursive=False):
+        if not input_folder or len(input_folder) == 0:
+            __help__()
+            return
+        __extract_file_assessments__(path, get_files(path))
 
 
 def main(argv: []):
