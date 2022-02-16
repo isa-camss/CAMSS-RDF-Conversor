@@ -1,6 +1,6 @@
-# <center>CAMSS Utilities</center>
-## <center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center>
-### <center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Tools</center>
+<h1><center>CAMSS Utilities</center></h1>
+<h1><center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center></h1>
+<h2><center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Tools</center></h2>
 <center><img src="./img/CAMSS Logo landscape"/></center>
 <center>European Commission, ISA2 Programme, DIGIT</center>
 <center><a href="mailto:camss@everis.com">camss@everis.nttdata.com</a></center>
@@ -14,14 +14,14 @@ See instructions in arti README.md.
 <h2>Notebook setup</h2><br>
 The camssXLS2RDF tool is a code adaptation of the previous Transformation utility (https://github.com/isa-camss/CAMSS-Ontology/blob/master/util/py/README.md).
 
-Install requirements.txt by opening the cmd. Then, type 'cd' and copy paste the 'RDFconversor' filepath in the command line:
+After have cloned the CAMSS-RDF-Conversor repository, install requirements.txt by: opening the cmd, the typing 'cd' and copy-pasting the 'CAMSS-RDF-Conversor' filepath in the command line.
 
 Example with the user 'WindowsUSER':
-C:\Users\WindowsUSER> cd path_to/RDFconversor
+C:\Users\WindowsUSER> cd path_to/CAMSS-RDF-Conversor
 
 Finally, type the following command:
 
-C:\Users\WindowsUSER\path_to\RDFconversor> pip install -r requirements.txt
+C:\Users\WindowsUSER\path_to\CAMSS-RDF-Conversor> pip install -r requirements.txt
 
 
 <h2>How can I use this notebook?</h2><br>
@@ -43,7 +43,7 @@ CAMSS Tools include several scenarios for the evaluation of standards and specif
 <b>You might want  to convert the NQuads files into Turtle or JSON-LD in <i>step III</i> and explore them in <i>step IV</i>.</b>
     </div><br>
     
-## I. CAMSS Assessments extraction
+<h2><b>I. CAMSS Assessments extraction</h2></b>
 
 A) Spread-sheets are placed in the 'in' folder. This notebook gets inside the 'in' folder and processes all the spread-sheets.<br><br>
 
@@ -51,15 +51,15 @@ B) Automatic identification of the CAMSS Tools scenario (see reference in EUSurv
 
 C) Follow the progress of the RDF Conversor.
 
-## II. Merging all Assessment-NQuads files into one single NQuads file 
+<h2><b>II. Merging all Assessment-NQuads files into one single NQuads file</h2></b>
 
-The individual Assessment NQuads files from folders 'ass/nq', 'crit/nq' and 'specs/nq', produced after extraction, are merged in one single NQuads file and placed in folders 'ass', 'crit' and 'specs', respectively.<br><br><b>Keep running the code from this cell.<b>
+The individual Assessment NQuads files from folders 'arti/out/ass/nq', 'arti/out/crit/nq' and 'arti/out/specs/nq', produced after extraction, are merged in one single NQuads file and placed in folders 'arti/out/ass', 'arti/out/crit' and 'arti/out/specs', respectively.<br><br><b>Keep running the code from this cell.<b>
 
-## III. Transformer command: from NQuads to Turtle and JSON-LD
+<h2><b>III. Transformer command: from NQuads to Turtle and JSON-LD</h2></b>
 
 In this third step, NQuads files are transformed to Turtle and JSON-LD files.
 
-## IV. Explore your results
+<h2><b>IV. Explore your results</h2></b>
 You might want to explore any of the RDF files that were created for any format, any Graph (individual or dataset graphs).
 
 
