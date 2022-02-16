@@ -36,7 +36,7 @@ It is an automated conversor designed to take any CAMSS Tools outputs from the E
 
 CAMSS Tools include several scenarios for the evaluation of standards and specifications, and ease the delivery of CAMSS Assessments grouped per scenario.<br><br> 
 <h3>How do spread-sheets look like?</h3><br>
-    Spread-sheets are labelled        Content_Export_CAMSSTools-VVV-XXXScenario_test_XXX<br>        (VVV: three characters for the version Tool, XXX: three characters for the Scenario, XXX: title of the specification).<br>
+    Spread-sheets are labelled        <center>Content_Export_XXXScenario_vVVV _NAME</center><br>        (VVV: three characters for the version Tool, XXX: three characters for the Scenario, NAME: naming of the CAMSS Assessment Scenario -which should be a representative name).<br>
 
 <h3>And then?</h3><br>
     Once the CAMSS Assessments are processed (<i>step I</i> and <i>step II</i>), RDF files are stored locally in your machine in the 'out' folder (inside the project folder) in the respective subfolders 'ass' (Assessments), 'crit' (Criteria and Scenarios) and 'specs' (standards and/or specifications) in the NQuads format, ready to be shared in CELLAR TripleStore. <br><br>Moreover, subfolders will contain the populated CAMSS Knowledge Graph: that is, the CAMSS Assessments Graphs, the CAMSS Scenarios and Critera Graphs and the Specifications Graphs, respectively.<br><br>
