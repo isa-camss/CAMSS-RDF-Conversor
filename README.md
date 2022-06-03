@@ -1,6 +1,6 @@
 <h1><center>CAMSS Utilities</center></h1>
 <h1><center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center></h1>
-<h2><center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Tools</center></h2>
+<h2><center>Compatible with EIF(v5), MSP(v5) and TS(v5) CAMSS Tools</center></h2>
 <center><img src="./img/CAMSS Logo landscape"/></center>
 <center>European Commission, ISA2 Programme, DIGIT</center>
 <center><a href="mailto:camss@everis.com">camss@everis.nttdata.com</a></center>
@@ -14,7 +14,7 @@ See instructions in arti README.md.
 <h2>Notebook setup</h2><br>
 The camssXLS2RDF tool is a code adaptation of the previous Transformation utility (https://github.com/isa-camss/CAMSS-Ontology/blob/master/util/py/README.md).
 
-After have cloned the CAMSS-RDF-Conversor repository, install requirements.txt by: opening the cmd, the typing 'cd' and copy-pasting the 'CAMSS-RDF-Conversor' filepath in the command line.
+After have cloned the CAMSS RDF Conversor repository, install requirements.txt by: opening the cmd, the typing 'cd' and copy-pasting the 'CAMSS-RDF-Conversor' filepath in the command line.
 
 Example with the user 'WindowsUSER':
 C:\Users\WindowsUSER> cd path_to/CAMSS-RDF-Conversor

@@ -10,7 +10,7 @@ from pathlib import PurePath
 import pandas as pd
 import rdflib
 from rdflib import Namespace
-from utils import progress_bar
+from utils import progress_bar, get_punct
 
 
 class AssessmentScenario:
@@ -182,7 +182,12 @@ class Extractor(AssessmentScenario):
         """
         Extracts the title of the specification being assessed.
         """
-        title = str(self.ass_.loc[self.row, 8]).strip()
+        if self.scenario == 'EIF':
+            title = str(self.ass_.loc[self.row, 11]).strip()
+        elif self.scenario == 'MSP':
+            title = str(self.ass_.loc[self.row, 10]).strip()
+        else:
+            title = str(self.ass_.loc[self.row, 12]).strip()
         return title
 
     def get_id(self) -> str:
@@ -236,6 +241,7 @@ class Extractor(AssessmentScenario):
         self.ass_dict['assessment_id'] = self.ass_id  # the current assessment identifier
         # EIF scenario
         if self.scenario == 'EIF':
+            self.ass_dict['spec_type'] = re.sub(" ", "", str(self.ass.loc[self.row, 10]))
             # criterion, criterion description, submitter organisation's judgement and score
             for criterion in self.criteria.keys():
                 self.ass_dict['results_in'][criterion] = {}  # a new dictionary in the dictionary
@@ -255,12 +261,12 @@ class Extractor(AssessmentScenario):
             self.ass_dict['status'] = None  # to review
             # the specification elements
             self.ass_dict['title'] = {}  # a new dictionary in the dictionary
-            self.ass_title = self.ass.loc[self.row, 9]  # title of the specification
+            self.ass_title = self.ass.loc[self.row, 11]  # title of the specification
             self.ass_dict['title']['P1'] = self.ass_title  # title of the specification
             self.ass_dict['title']['spec_id'] = sha256(
                 str(self.ass_dict['title']['P1']))  # the specification identifier, the MD5 of the title
             self.ass_dict['title']['distribution_id'] = str(uuid.uuid4())  # distribution_id
-            self.ass_dict['title']['P2'] = self.ass.loc[self.row, 12]  # spec_download_url
+            self.ass_dict['title']['P2'] = self.ass.loc[self.row, 14]  # spec_download_url
             # organization
             self.ass_dict['organization'] = {}  # a new dictionary in the dictionary
             self.ass_dict['organization']['L1'] = self.ass.loc[self.row, 1]  # Submitter_name
@@ -277,19 +283,33 @@ class Extractor(AssessmentScenario):
             self.ass_dict['organization']['uuid'] = uuid.uuid4()  # organization contact point uuid (?)
             # agent, SDO
             self.ass_dict['agent'] = {}  # a new dictionary in the dictionary
-            self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 13]  # sdo_name
+            sdo_name = self.ass.loc[self.row, 15]
+            if sdo_name == 'Other (SDO/SSO)':
+                self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
+                if self.ass_dict['agent']['P3'] == self.ass_dict['title']['P1']:
+                    self.ass_dict['agent']['P3'] = self.ass_dict['agent']['P3'] + ' (SDO/SSO)'
+                #sdo_nameself.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
+                # find for parenthesis, i.e. short names
+                #sdo_name_ = re.split('[() ]', sdo_name)
+                #interv = [i for i in enumerate(sdo_name_) if i[1] == '']
+                #if interv != list():
+                #    self.ass_dict['agent']['P3'] = sdo_name_[interv[0][0]+1:interv[1][0]]
+                #    self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]  # sdo_name
+                #    self.ass_dict['agent']['P3'] = self.ass_dict['agent']['P3'] + f' ({self.ass.loc[self.row, 17]})'
+            else:
+                self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 15]  # sdo_name
             self.ass_dict['agent']['sdo_id'] = sha256(
                 str(self.ass_dict['agent']['P3']))  # sdo_id (for the Agent instance)
-            self.ass_dict['agent']['P4'] = self.ass.loc[self.row, 16]  # sdo_contact_point
+            self.ass_dict['agent']['P4'] = self.ass.loc[self.row, 18]  # sdo_contact_point
             self.ass_dict['agent']['uuid'] = uuid.uuid4()  # agent contact point uuid (?)
             # submission_rationale
             self.ass_dict['P5'] = None  # submission_rationale
             # 'other_evaluations'
-            self.ass_dict['P6'] = self.ass.loc[self.row, 18]  # other_evaluations
+            self.ass_dict['P6'] = self.ass.loc[self.row, 18]  # other_evaluations # revisar
             # 'considerations'
             self.ass_dict['C1'] = None  # correctness
             self.ass_dict['C2'] = None  # completeness
-            self.ass_dict['C3'] = self.ass.loc[self.row, 19]  # egov_interoperability
+            self.ass_dict['C3'] = self.ass.loc[self.row, 19]  # egov_interoperability # revisar
             # 'io_spec_type'
             self.ass_dict['io_spec_type'] = None  # interoperability specification type
             # additional features
@@ -301,6 +321,7 @@ class Extractor(AssessmentScenario):
             self.ass_dict['C5'] = None  # egov_interoperability
 
         elif self.scenario == 'MSP':
+            self.ass_dict['spec_type'] = re.sub(" ", "", str(self.ass.loc[self.row, 9]))
             # criterion, judgement and score
             for criterion in self.criteria.keys():
                 self.ass_dict['results_in'][criterion] = {}  # a new dictionary in the dictionary
@@ -366,6 +387,7 @@ class Extractor(AssessmentScenario):
             self.ass_dict['C5'] = self.ass.loc[self.row, 24]  # egov_interoperability
 
         elif self.scenario == 'TS':
+            self.ass_dict['spec_type'] = re.sub(" ", "", str(self.ass.loc[self.row, 11]))
             # criterion, judgement and score
             for criterion in self.criteria.keys():
                 self.ass_dict['results_in'][criterion] = {}  # a new dictionary in the dictionary
@@ -439,24 +461,39 @@ class Extractor(AssessmentScenario):
                 Builds a vector with groups of criteria
                 :return: nothing, values are kept into a class-scoped vector
                 """
-
+        possible_answ = ['The working group is open to all without specific fees, registration, or other conditions.',
+                           'All major and minor releases foresee a public review during which collected feedback is publicly visible.',
+                           'YES']
+        predefined_answ = {'W3C (https://www.w3.org)':['W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard. Also, a clear Release Notes tracking the changes of the different versions is archived.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
+                           'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard, including a public review.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
+                           'The W3C Royalty-Free IPR licenses granted under the W3C Patent Policy apply to all W3C specifications, including this specification.\n\nW3C Patent practice:\nhttps://www.w3.org/TR/patent-practice#ref-AC'],
+                           'IETF (https://www.ietf.org/)':['IETF has a formal review and approval so that all the relevant stakeholders can formally appeal or raise objections to the development and approval of specifications.\nEach distinct version of an Internet standards-related specification is published as part of the "Request for Comments" (RFC) document series. This archival series is the official publication channel for Internet standards documents and other publications.\nDuring the development of a specification, draft versions of the document are made available for informal review and comment by placing them in the IETF\'s "Internet-Drafts" directory, which is replicated on a number of Internet hosts. This makes an evolving working document readily available to a wide audience, facilitating the process of review and revision.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/\n\nInternet Best Current Practices IETF:\nhttps://tools.ietf.org/html/rfc2026',
+                           'The IETF is a consensus-based group, and authority to act on behalf of the community requires a high degree of consensus and the continued consent of the community. The process of creating and Internet Standard is straightforward: a specification undergoes a period of development and several iterations of review by the Internet community and revision based upon experience, is adopted as a Standard by the appropriate body... and is published. In practice, the process is more complicated, due to (1) the difficulty of creating specifications of high technical quality; (2) the need to consider the interests of all the affected parties; (3) the importance of establishing widespread community consensus; and (4) the difficulty of evaluating the utility of a particular specification for the Internet community. The goals of the Internet Standards Process are:\n- Technical excellence;\n- prior implementation and testing;\n- clear, concise, and easily understood documentation;\n- openness and fairness; and\n- timeliness.\nThe goal of technical competence, the requirement for prior implementation and testing, and the need to allow all interested parties to comment all require significant time and effort. The Internet Standards Process is intended to balance these conflicting goals. The process is believed to be as short and simple as possible without sacrificing technical excellence, thorough testing before adoption of a standard, or openness and fairness.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/',
+                           'Like all the IETF standards, this specification is a free and open technical specification, built on IETF standards and licenses from the Open Web Foundation. Therefore it is licensed on a royalty-free basis.\nNo IPR disclosures have been submitted directly on this RFC.\n\nIntellectual Property Rights in IETF:\nhttps://tools.ietf.org/html/rfc3668']}
         for criterion in self.criteria_.keys():
             index_0 = self.criteria_[criterion][0]
             index = index_0 + 1
             # Score element ID and Value
             self.criteria_[criterion].append(str(uuid.uuid4()))
             if self.scenario == 'EIF':
-                self.criteria_[criterion].append(self._new_yesno_choice(str(self.ass.loc[self.row, index_0]),
-                                                                       self.gradients))
+                option = str(self._new_yesno_choice(str(self.ass.loc[self.row, index_0]), self.gradients))
+                self.criteria_[criterion].append(option)
             else:
-                self.criteria_[criterion].append(self._yesno_choice(str(self.ass.loc[self.row, index_0])))
+                option = str(self._yesno_choice(str(self.ass.loc[self.row, index_0])))
+                self.criteria_[criterion].append(option)
             # Criterion Justification Id and Judgement text
             self.criteria_[criterion].append(str(uuid.uuid4()))
             text = self.ass.loc[self.row, index]
             text = repr(text)
             text = re.sub(r'"', '\\"', text)
             text = re.sub(r'\\r', '', text)
-            self.criteria_[criterion].append(text)
+            if option in possible_answ and self.ass.loc[self.row, 15] == 'W3C (https://www.w3.org)':
+                self.criteria_[criterion].append(repr(predefined_answ['W3C (https://www.w3.org)'][possible_answ.index(option)]))
+            elif option in possible_answ and self.ass.loc[self.row, 15] == 'IETF (https://www.ietf.org/)':
+                self.criteria_[criterion].append(repr(predefined_answ['IETF (https://www.ietf.org/)'][possible_answ.index(option)]))
+            else:
+                self.criteria_[criterion].append(text)
+            self.criteria_[criterion].append(str(self.ass.loc[self.row, index_0]))
         return
 
 
@@ -469,6 +506,7 @@ class Graph:
         if ass_ is None:
             self.spec_title = extract.ass_title
             self.create_ass_graph()
+            get_punct(extract.criteria, self.dictionary)
             self.create_specs_graph()
         else:
             self.create_criteria_graph()
@@ -481,21 +519,16 @@ class Graph:
         else:
             return "This CAMSS scenario is dedicated to the assessment of formal technical specification, in general terms. According to the regulation on standardisation 1025/2012, a technical specification is a 'document that prescribes technical requirements to be fulfilled by a product, process, service or system'."
 
+    #def get_predef_judgment(self):
+
+
     def create_ass_graph(self=None):
         origin_graph_org = f'<{CAMSSA}{self.dictionary["organization"]["submitter_org_id"]}>'
+        origin_graph_contact_org = f'<{CAMSSA}{self.dictionary["organization"]["uuid"]}>'
         origin_graph_ass = f'<{CAMSSA}{self.dictionary["assessment_id"]}>'
         target_graph_ass = f'<{CAMSSA}>'
         with open('arti/out/ass/nq/' + f'{self.sc}-{self.tool_version}-CAMSSAssessment_{self.spec_title}.nq', 'w',
                   encoding='utf-8') as fa:
-            # organization
-            print(origin_graph_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
-            print(origin_graph_org + f' <{RDF}type> <{ORG}Organization> {target_graph_ass} .', file=fa)
-            print(
-                origin_graph_org + f' <{CAMSS}ContactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_org + f' <{SKOS}prefLabel> "{self.dictionary["organization"]["L1"]} {self.dictionary["organization"]["L2"]}"@en {target_graph_ass} .',
-                file=fa)
             # assessment
             print(origin_graph_ass + f' <{RDF}type> <{CAV}Assessment> {target_graph_ass} .', file=fa)
             print(origin_graph_ass + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
@@ -509,7 +542,7 @@ class Graph:
                 origin_graph_ass + f' <{CAMSS}submissionDate> "{self.dictionary["organization"]["L7"]}"^^<{XSD}date> {target_graph_ass} .',
                 file=fa)
             print(
-                origin_graph_ass + f' <{XSD}toolVersion> <{TOOL}{self.dictionary["tool_version"]}> {target_graph_ass} .',
+                origin_graph_ass + f' <{CAMSS}toolVersion> <{TOOL}{self.dictionary["tool_version"]}> {target_graph_ass} .',
                 file=fa)
             print(
                 origin_graph_ass + f' <{CAV}contextualisedBy> <{SC}{self.dictionary["contextualised_by"]["scenario_id"]}> {target_graph_ass} .',
@@ -521,6 +554,25 @@ class Graph:
             print(origin_graph_ass + f' <{CAV}status> <{STATUS}Complete> {target_graph_ass} .', file=fa)
             print(origin_graph_ass + f' <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_ass} .',
                   file=fa)
+            # organization
+            print(origin_graph_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+            print(origin_graph_org + f' <{RDF}type> <{ORG}Organization> {target_graph_ass} .', file=fa)
+            print(
+                origin_graph_org + f' <{CAMSS}contactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
+                file=fa)
+            print(
+                origin_graph_org + f' <{SKOS}prefLabel> "{self.dictionary["organization"]["L1"]} {self.dictionary["organization"]["L2"]}"@en {target_graph_ass} .',
+                file=fa)
+            print(
+                origin_graph_contact_org + f' <{RDF}type> <{SCHEMA}ContactPoint> {target_graph_ass} .',
+                file=fa)
+            print(origin_graph_contact_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+            if self.dictionary["organization"]["L6"] == 'nan':
+                print(
+                    origin_graph_contact_org + f' <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_ass} .',
+                    file=fa)
+            else:
+                print(origin_graph_contact_org + f' <{SCHEMA}email> "{self.dictionary["organization"]["L6"]}" {target_graph_ass} .', file=fa)
             # statement
             for criterion in self.dictionary['results_in'].keys():
                 origin_graph_sta = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}>'
@@ -584,12 +636,17 @@ class Graph:
             print(
                 f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{CSSV}isContactPointOf> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
                 file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "{self.dictionary["agent"]["P4"]}" {target_graph_spe} .',
-                file=fs)
+            if self.dictionary["agent"]["P4"] != self.dictionary["agent"]["P4"]:
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_spe} .',
+                    file=fs)
+            else:
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "{self.dictionary["agent"]["P4"]}" {target_graph_spe} .',
+                    file=fs)
             # specification Standard
             print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{CSSV}Standard> {target_graph_spe} .',
+                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{CSSV}{self.dictionary["spec_type"]}> {target_graph_spe} .',
                 file=fs)
             print(
                 f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
@@ -657,6 +714,7 @@ def declare_namespace(g):
     STATUS_ = Namespace("http://data.europa.eu/2sa/rsc/assessment-status#")
     TOOL_ = Namespace("http://data.europa.eu/2sa/rsc/toolkit-version#")
     SCHEMA_ = Namespace("http://schema.org/")
+    DCT_ = "http://purl.org/dc/terms/"
     g.bind('camss', CAMSS_, replace=True)
     g.bind('cav', CAV_, replace=True)
     g.bind('cssv', CSSV_)
@@ -665,7 +723,8 @@ def declare_namespace(g):
     g.bind('status', STATUS_)
     g.bind('tool', TOOL_)
     g.bind('sc', SC_)
-    g.bind('schema', SCHEMA_)
+    g.bind('schema', SCHEMA_, replace=True)
+    g.bind('dct', DCT_, replace=True)
     g.bind('cccev', CCCEV_, replace=True)
     return g
 
@@ -680,16 +739,17 @@ def __merge_graphs__():
                 # Iterate through list
                 for names in filenames:
                     # Open each file in read mode
-                    with open(files_root + names) as infile:
+                    with open(files_root + names, 'r') as infile:
                         # read the data from file1 and
                         # file2 and write it in file3
-                        outfile.write(infile.read())
+                        for line in infile:
+                            outfile.write(line)
         if files_root == 'arti/out/crit/nq/':
             with open('arti/out/crit/crit-graph.nq', 'w', encoding='utf-8') as outfile:
                 # Iterate through list
                 for names in filenames:
                     # Open each file in read mode
-                    with open(files_root + names) as infile:
+                    with open(files_root + names, 'r') as infile:
                         # read the data from file1 and
                         # file2 and write it in file3
                         outfile.write(infile.read())
@@ -698,7 +758,7 @@ def __merge_graphs__():
                 # Iterate through list
                 for names in filenames:
                     # Open each file in read mode
-                    with open(files_root + names) as infile:
+                    with open(files_root + names, 'r') as infile:
                         # read the data from file1 and
                         # file2 and write it in file3
                         outfile.write(infile.read())
@@ -735,7 +795,7 @@ def convert_graph_to(target: str):
         # Creating a list of filenames
         filenames = get_files(files_root, exclude=['nq', 'ttl', 'json-ld', 'ass-graph.jsonld', 'specs-graph.jsonld',
                                                    'crit-graph.jsonld', 'ass-graph.ttl', 'specs-graph.ttl',
-                                                   'crit-graph.ttl'])
+                                                   'crit-graph.ttl', 'CAMSS_Ontology_Assessments_graph.ttl'])
         for file in filenames:
             head = file[:-3]
             g = rdflib.ConjunctiveGraph()
@@ -839,7 +899,7 @@ def __extract_file_assessments__(root_dir: str, ass_files: list):
             Graph(extract=extractor, ass_=ass_file)
             # print(f"*{extractor.ass_dict['title']['P1']}* graph created!")
             # print()
-            progress_bar(file, row, extractor.ass_dict['title']['P1'])
+            #progress_bar(file, row, extractor.ass_dict['title']['P1'])
     log("All graphs successfully created!")
     print()
 

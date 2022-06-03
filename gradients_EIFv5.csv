@@ -5,11 +5,16 @@ The specification has been included within the catalogue of a Member State with 
 The specification has been included within the catalogue of a Member State with a middel-lower performance than stated in the Digital Public Administration Factsheets from the NIFO.	60
 The specification has been included within the catalogue of a Member State with a middle-upper performance than stated in the Digital Public Administration Factsheets from the NIFO.	80
 The specification has been included within the catalogue of a Member State with a higher performance than stated in the Digital Public Administration Factsheets from the NIFO.	100
+The specification does not support the publication of data on the web, or does so but with a non-open licence.	20
+The specification supports publishing data on the web with an open licence and in a structured, machine-readable format.	40
+In addition to the previous question, the specification does not require proprietary software for the processing of its related data.	60
+In addition to the previous question, the specification is or incorporates open standards (e.g. W3C).	80
+In addition to the requirements stated in the previous answer, the specification supports published data as Linked Data.	100
 There is no information on the working group of the specification.	20
-The working group is open to participation by any stakeholder but requires registration, fees and membership approval.	40
+The working group is open to participation by any stakeholder but requires registration, fees, and membership approval.	40
 The working group is open to participation by any stakeholder but requires fees and membership approval.	60
 The working group is open to participation following a registration process.	80
-The working group is open to all without specific fees, registration or other conditions.	100
+The working group is open to all without specific fees, registration, or other conditions.	100
 Specification releases do not foresee public reviews.	20
 Public review is applied to certain releases depending on the involved changes.	40
 All major releases foresee a public review.	60
@@ -19,13 +24,13 @@ The specification has no published releases and no publicly accessible informati
 The specification is under development without published releases.	40
 The specification is under development with published preview releases.	60
 The specification has published major releases but without public documentation on its supporting processes (e.g. change management and release management).	80
-The specification, additionally to having major releases available, has published documentation on its supporting processes (e.g. change management and release management).	100
+The specification, in addition to having major releases available, has published documentation on its supporting processes (e.g. change management and release management).	100
 Not Applicable - The specification does not have market acceptance because it is directly used to create innovative solutions.	100
 There is no information about the specification's market uptake.	20
 The specification has known implementations but not enough to indicate market acceptance.	40
-The specification has wide-spread use indicating market acceptance.	60
-The specification has wide-spread use and relevant independent reports proving its market acceptance.	80
-The specification has wide-spread use, indicating market acceptance.	100
+The specification has widespread use indicating market acceptance.	60
+The specification has widespread use and relevant independent reports proving its market acceptance.	80
+The specification has widespread use, indicating market acceptance.	100
 There is no community linked to the specification.	20
 Specification support is available but as part of a closed community requiring registration and possibly fees.	40
 There is no specific community to support the specification but there are public channels for the exchange of help and knowledge among its users.	60
@@ -49,16 +54,16 @@ The specification enables exposure of such interfaces.	100
 The specification hinders the protection of personal data.	20
 The specification does not address the protection of personal data but neither prevents it.	40
 The specification includes certain data protection considerations but without being exhaustive.	60
-The specification explicitly addresses data protection but without making reference to relevant regulations.	80
+The specification explicitly addresses data protection but without referring to relevant regulations.	80
 The specification explicitly addresses data protection and its alignment to relevant regulations.	100
 The specification is tied to a specific domain and is restricted from being used in other domains.	20
 The specification is associated with a specific domain but its use in other domains is difficult.	40
-The specification is associated with a specific domain but could be partially used to other domains.	60
+The specification is associated with a specific domain but could be partially used in other domains.	60
 The specification is associated with a specific domain but could be used 'as-is' to other domains.	80
 The specification is domain-agnostic, designed to be used in any domain.	100
 The specification is tied to a specific domain and is restricted from being implemented in other domains.	20
 The specification is associated with a specific domain but its implementation in other domains is difficult.	40
-The specification is associated with a specific domain but could be partially implemented to other domains.	60
+The specification is associated with a specific domain but could be partially implemented in other domains.	60
 The specification is associated with a specific domain but could be implemented 'as-is' to other domains.	80
 The specification is domain-agnostic, designed to be implemented in any domain.	100
 The specification is only meant to be used as a whole.	20
@@ -103,9 +108,9 @@ The specification foresees support for multilingualism but this is not complete.
 The specification is designed to fully support multilingualism.	100
 The specification prevents or does not support the long-term preservation .	20
 The specification neither addresses the long-term preservation nor prevents it.	40
-The specification addresses long-term preservation of electronic resources (information, data, etc) in a limited manner.	60
+The specification addresses the long-term preservation of electronic resources (information, data, etc) in a limited manner.	60
 The specification addresses long-term preservation of electronic resources (information, data, etc), but not in a complete manner.	80
-The specification explicitly addresses and enables the long-term preservation.	100
+The specification explicitly addresses and enables long-term preservation.	100
 There are no such assessments.	20
 There are such assessments that indirectly address the specification.	40
 There are such assessments evaluating digital solutions' effectiveness that involve the specification.	60
