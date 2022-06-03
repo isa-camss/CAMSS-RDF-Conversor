@@ -1,6 +1,6 @@
 <h1><center>CAMSS Utilities</center></h1>
 <h1><center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center></h1>
-<h2><center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Tools</center></h2>
+<h2><center>Compatible with EIF(v5), MSP(v1) and TS(v1) CAMSS Assessment Solutions</center></h2>
 <center><img src="../img/CAMSS Logo landscape"/></center>
 <center>European Commission, ISA2 Programme, DIGIT</center>
 <center><a href="mailto:camss@everis.com">camss@everis.nttdata.com</a></center>

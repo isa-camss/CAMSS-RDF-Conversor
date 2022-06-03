@@ -1,6 +1,6 @@
 <h1><center>CAMSS Utilities</center></h1>
 <h1><center>Transformation of the CAMSS Assessments, from spread-sheets to RDFs</center></h1>
-<h2><center>Compatible with EIF(v5), MSP(v5) and TS(v5) CAMSS Tools</center></h2>
+<h2><center>Compatible with EIF(v5), MSP(v5) and TS(v5) CAMSS Assessment Solutions</center></h2>
 <center><img src="./img/CAMSS Logo landscape"/></center>
 <center>European Commission, ISA2 Programme, DIGIT</center>
 <center><a href="mailto:camss@everis.com">camss@everis.nttdata.com</a></center>
@@ -31,12 +31,12 @@ Place the cursor in this cell, and click on the Run buttom (in the notebook's ab
                             
 <div>This <b>camssXLS2RDF</b> CAMSS Utilities notebook is a module that takes a spread-sheet from <a href="https://ec.europa.eu/eusurvey/home/welcome">EUSurvey</a>, in xls, xlsm or csv formats and transforms them into RDF files.<br>
 
-It is an automated conversor designed to take any CAMSS Tools outputs from the EUSurvey platform.<br>
+It is an automated conversor designed to take any CAMSS Assessment Solutions outputs from the EUSurvey platform.<br>
 
 
-CAMSS Tools include several scenarios for the evaluation of standards and specifications, and ease the delivery of CAMSS Assessments grouped per scenario.<br><br> 
+CAMSS Assessment Solutions include several scenarios for the evaluation of standards and specifications, and ease the delivery of CAMSS Assessments grouped per scenario.<br><br> 
 <h3>How do spread-sheets look like?</h3><br>
-    Spread-sheets are labelled        <center>Content_Export_XXXScenario_vVVV _NAME</center><br>        (VVV: three characters for the version Tool, XXX: three characters for the Scenario, NAME: naming of the CAMSS Assessment Scenario -which should be a representative name).<br>
+    Spread-sheets are labelled        <center>Content_Export_XXXScenario_vVVV _NAME</center><br>        (VVV: three characters for the Solution version, XXX: three characters for the Scenario, NAME: naming of the CAMSS Assessment Scenario -which should be a representative name).<br>
 <center><img src="img/EUSurvey_output.png"/></center>
 <h3>And then?</h3><br>
     Once the CAMSS Assessments are processed (<i>step I</i> and <i>step II</i>), RDF files are stored locally in your machine in the 'out' folder (inside the project folder) in the respective subfolders 'ass' (Assessments), 'crit' (Criteria and Scenarios) and 'specs' (standards and/or specifications) in the NQuads format, ready to be shared in CELLAR TripleStore. <br><br>Moreover, subfolders will contain the populated CAMSS Knowledge Graph: that is, the CAMSS Assessments Graphs, the CAMSS Scenarios and Critera Graphs and the Specifications Graphs, respectively.<br><br>
@@ -47,7 +47,7 @@ CAMSS Tools include several scenarios for the evaluation of standards and specif
 
 A) Spread-sheets are placed in the 'in' folder. This notebook gets inside the 'in' folder and processes all the spread-sheets.<br><br>
 
-B) Automatic identification of the CAMSS Tools scenario (see reference in EUSurvey) and extraction all the Assessments.<br><br>
+B) Automatic identification of the CAMSS Assessment Solutions (see reference in EUSurvey) and extraction all the Assessments.<br><br>
 
 C) Follow the progress of the RDF Conversor.
 
