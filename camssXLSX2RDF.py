@@ -85,7 +85,7 @@ class AssessmentScenario:
         scenario = str(self.ass_df.loc[0, 1]).strip()
         vrs1 = pattern1.search(scenario)
         vrs2 = pattern2.search(scenario)
-        #if self.scenario in ['MSP', 'TS']:
+        # if self.scenario in ['MSP', 'TS']:
         #    return "1.1.0"
         if vrs1:
             vrs1 = re.split(r'(\w)', vrs1.group(1))[1:-1]
@@ -155,7 +155,7 @@ class Extractor(AssessmentScenario):
     row: int  # DataFrame row, this is the row pointing at the current assessment (integer type)
     ass_title: str  # the title of the specification being assessed (string type)
     ass_id: str  # the assessment identifier (string type)
-    criteria_: dict # criteria from AssessmentScenario
+    criteria_: dict  # criteria from AssessmentScenario
     ass_dict: dict  # the assessment data (dictionary type)
 
     def __init__(self, file_path: str, row: int = 0):
@@ -167,7 +167,8 @@ class Extractor(AssessmentScenario):
         super().__init__(file_path, row)
         self.ass_ = self.ass_df
         self.row = row
-        self.ass = p.concat([self.ass_.iloc[3:4], self.ass_.iloc[row:row + 1]])  # the Assessments instance header and the the input data of the assessments file
+        self.ass = p.concat([self.ass_.iloc[3:4], self.ass_.iloc[
+                                                  row:row + 1]])  # the Assessments instance header and the the input data of the assessments file
         self.ass_title = self.get_title()  # the title of the specification being assessed
         # criteria extraction from the current assessment
         self.criteria_ = self.criteria
@@ -188,6 +189,7 @@ class Extractor(AssessmentScenario):
             title = str(self.ass_.loc[self.row, 10]).strip()
         else:
             title = str(self.ass_.loc[self.row, 12]).strip()
+        title = re.sub("\s+", " ", title).strip()
         return title
 
     def get_id(self) -> str:
@@ -248,7 +250,7 @@ class Extractor(AssessmentScenario):
                 self.ass_dict['results_in'][criterion]['criterion_sha_id'] = self.criteria[criterion][
                     1]  # the criterion identifier
                 self.ass_dict['results_in'][criterion]['criterion_description'] = self.criteria[criterion][
-                                                                                           2]  # the criterion description
+                    2]  # the criterion description
                 self.ass_dict['results_in'][criterion]['statement'] = self.criteria[criterion][
                     6]  # submitter organisation judgement
                 self.ass_dict['results_in'][criterion]['statement_id'] = self.criteria[criterion][
@@ -288,11 +290,11 @@ class Extractor(AssessmentScenario):
                 self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
                 if self.ass_dict['agent']['P3'] == self.ass_dict['title']['P1']:
                     self.ass_dict['agent']['P3'] = self.ass_dict['agent']['P3'] + ' (SDO/SSO)'
-                #sdo_nameself.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
+                # sdo_nameself.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
                 # find for parenthesis, i.e. short names
-                #sdo_name_ = re.split('[() ]', sdo_name)
-                #interv = [i for i in enumerate(sdo_name_) if i[1] == '']
-                #if interv != list():
+                # sdo_name_ = re.split('[() ]', sdo_name)
+                # interv = [i for i in enumerate(sdo_name_) if i[1] == '']
+                # if interv != list():
                 #    self.ass_dict['agent']['P3'] = sdo_name_[interv[0][0]+1:interv[1][0]]
                 #    self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]  # sdo_name
                 #    self.ass_dict['agent']['P3'] = self.ass_dict['agent']['P3'] + f' ({self.ass.loc[self.row, 17]})'
@@ -300,7 +302,8 @@ class Extractor(AssessmentScenario):
                 self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 15]  # sdo_name
             self.ass_dict['agent']['sdo_id'] = sha256(
                 str(self.ass_dict['agent']['P3']))  # sdo_id (for the Agent instance)
-            self.ass_dict['agent']['P4'] = self.ass.loc[self.row, 18]  # sdo_contact_point
+            self.ass_dict['agent']['P4'] = self.ass.loc[self.row, 18]
+            # sdo_contact_point
             self.ass_dict['agent']['uuid'] = uuid.uuid4()  # agent contact point uuid (?)
             # submission_rationale
             self.ass_dict['P5'] = None  # submission_rationale
@@ -328,7 +331,7 @@ class Extractor(AssessmentScenario):
                 self.ass_dict['results_in'][criterion]['criterion_sha_id'] = self.criteria[criterion][
                     1]  # the criterion identifier
                 self.ass_dict['results_in'][criterion]['criterion_description'] = self.criteria[criterion][
-                                                                                           2]  # the criterion description
+                    2]  # the criterion description
                 self.ass_dict['results_in'][criterion]['statement'] = self.criteria[criterion][
                     6]  # submitter organisation judgement
                 self.ass_dict['results_in'][criterion]['statement_id'] = self.criteria[criterion][
@@ -394,7 +397,7 @@ class Extractor(AssessmentScenario):
                 self.ass_dict['results_in'][criterion]['criterion_sha_id'] = self.criteria[criterion][
                     1]  # the criterion identifier
                 self.ass_dict['results_in'][criterion]['criterion_description'] = self.criteria[criterion][
-                                                                                           2]  # the criterion description
+                    2]  # the criterion description
                 self.ass_dict['results_in'][criterion]['statement'] = self.criteria[criterion][
                     6]  # submitter organisation judgement
                 self.ass_dict['results_in'][criterion]['statement_id'] = self.criteria[criterion][
@@ -451,6 +454,15 @@ class Extractor(AssessmentScenario):
             self.ass_dict['P10'] = None  # first SDO spec?
             self.ass_dict['C4'] = self.ass.loc[self.row, 34]  # egov_interoperability
             self.ass_dict['C5'] = self.ass.loc[self.row, 35]  # egov_interoperability
+        for elem in self.ass_dict['title']:
+            if type(self.ass_dict['title'][elem]) is str:
+                self.ass_dict['title'][elem] = re.sub("\s+", "", self.ass_dict['title'][elem]).strip()
+        for elem in self.ass_dict['organization']:
+            if type(self.ass_dict['organization'][elem]) is str:
+                self.ass_dict['organization'][elem] = re.sub("\s+", "", self.ass_dict['organization'][elem]).strip()
+        for elem in self.ass_dict['agent']:
+            if type(self.ass_dict['agent'][elem]) is str:
+                self.ass_dict['agent'][elem] = re.sub("\s+", "", self.ass_dict['agent'][elem]).strip()
         return
 
     def _get_criteria(self):
@@ -462,24 +474,27 @@ class Extractor(AssessmentScenario):
                 :return: nothing, values are kept into a class-scoped vector
                 """
         possible_answ = ['The working group is open to all without specific fees, registration, or other conditions.',
-                           'All major and minor releases foresee a public review during which collected feedback is publicly visible.',
-                           'YES']
-        predefined_answ = {'W3C (https://www.w3.org)':['W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard. Also, a clear Release Notes tracking the changes of the different versions is archived.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
-                           'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard, including a public review.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
-                           'The W3C Royalty-Free IPR licenses granted under the W3C Patent Policy apply to all W3C specifications, including this specification.\n\nW3C Patent practice:\nhttps://www.w3.org/TR/patent-practice#ref-AC'],
-                           'IETF (https://www.ietf.org/)':['IETF has a formal review and approval so that all the relevant stakeholders can formally appeal or raise objections to the development and approval of specifications.\nEach distinct version of an Internet standards-related specification is published as part of the "Request for Comments" (RFC) document series. This archival series is the official publication channel for Internet standards documents and other publications.\nDuring the development of a specification, draft versions of the document are made available for informal review and comment by placing them in the IETF\'s "Internet-Drafts" directory, which is replicated on a number of Internet hosts. This makes an evolving working document readily available to a wide audience, facilitating the process of review and revision.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/\n\nInternet Best Current Practices IETF:\nhttps://tools.ietf.org/html/rfc2026',
-                           'The IETF is a consensus-based group, and authority to act on behalf of the community requires a high degree of consensus and the continued consent of the community. The process of creating and Internet Standard is straightforward: a specification undergoes a period of development and several iterations of review by the Internet community and revision based upon experience, is adopted as a Standard by the appropriate body... and is published. In practice, the process is more complicated, due to (1) the difficulty of creating specifications of high technical quality; (2) the need to consider the interests of all the affected parties; (3) the importance of establishing widespread community consensus; and (4) the difficulty of evaluating the utility of a particular specification for the Internet community. The goals of the Internet Standards Process are:\n- Technical excellence;\n- prior implementation and testing;\n- clear, concise, and easily understood documentation;\n- openness and fairness; and\n- timeliness.\nThe goal of technical competence, the requirement for prior implementation and testing, and the need to allow all interested parties to comment all require significant time and effort. The Internet Standards Process is intended to balance these conflicting goals. The process is believed to be as short and simple as possible without sacrificing technical excellence, thorough testing before adoption of a standard, or openness and fairness.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/',
-                           'Like all the IETF standards, this specification is a free and open technical specification, built on IETF standards and licenses from the Open Web Foundation. Therefore it is licensed on a royalty-free basis.\nNo IPR disclosures have been submitted directly on this RFC.\n\nIntellectual Property Rights in IETF:\nhttps://tools.ietf.org/html/rfc3668']}
+                         'All major and minor releases foresee a public review during which collected feedback is publicly visible.',
+                         'YES']
+        predefined_answ = {'W3C (https://www.w3.org)': [
+            'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard. Also, a clear Release Notes tracking the changes of the different versions is archived.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
+            'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard, including a public review.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
+            'The W3C Royalty-Free IPR licenses granted under the W3C Patent Policy apply to all W3C specifications, including this specification.\n\nW3C Patent practice:\nhttps://www.w3.org/TR/patent-practice#ref-AC'],
+            'IETF (https://www.ietf.org/)': [
+                'IETF has a formal review and approval so that all the relevant stakeholders can formally appeal or raise objections to the development and approval of specifications.\nEach distinct version of an Internet standards-related specification is published as part of the "Request for Comments" (RFC) document series. This archival series is the official publication channel for Internet standards documents and other publications.\nDuring the development of a specification, draft versions of the document are made available for informal review and comment by placing them in the IETF\'s "Internet-Drafts" directory, which is replicated on a number of Internet hosts. This makes an evolving working document readily available to a wide audience, facilitating the process of review and revision.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/\n\nInternet Best Current Practices IETF:\nhttps://tools.ietf.org/html/rfc2026',
+                'The IETF is a consensus-based group, and authority to act on behalf of the community requires a high degree of consensus and the continued consent of the community. The process of creating and Internet Standard is straightforward: a specification undergoes a period of development and several iterations of review by the Internet community and revision based upon experience, is adopted as a Standard by the appropriate body... and is published. In practice, the process is more complicated, due to (1) the difficulty of creating specifications of high technical quality; (2) the need to consider the interests of all the affected parties; (3) the importance of establishing widespread community consensus; and (4) the difficulty of evaluating the utility of a particular specification for the Internet community. The goals of the Internet Standards Process are:\n- Technical excellence;\n- prior implementation and testing;\n- clear, concise, and easily understood documentation;\n- openness and fairness; and\n- timeliness.\nThe goal of technical competence, the requirement for prior implementation and testing, and the need to allow all interested parties to comment all require significant time and effort. The Internet Standards Process is intended to balance these conflicting goals. The process is believed to be as short and simple as possible without sacrificing technical excellence, thorough testing before adoption of a standard, or openness and fairness.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/',
+                'Like all the IETF standards, this specification is a free and open technical specification, built on IETF standards and licenses from the Open Web Foundation. Therefore it is licensed on a royalty-free basis.\nNo IPR disclosures have been submitted directly on this RFC.\n\nIntellectual Property Rights in IETF:\nhttps://tools.ietf.org/doc/html/rfc8179']}
         for criterion in self.criteria_.keys():
             index_0 = self.criteria_[criterion][0]
             index = index_0 + 1
+            answer = str(self.ass.loc[self.row, index_0]).strip()
             # Score element ID and Value
             self.criteria_[criterion].append(str(uuid.uuid4()))
             if self.scenario == 'EIF':
-                option = str(self._new_yesno_choice(str(self.ass.loc[self.row, index_0]), self.gradients))
+                option = str(self._new_yesno_choice(str(answer), self.gradients))
                 self.criteria_[criterion].append(option)
             else:
-                option = str(self._yesno_choice(str(self.ass.loc[self.row, index_0])))
+                option = str(self._yesno_choice(str(answer)))
                 self.criteria_[criterion].append(option)
             # Criterion Justification Id and Judgement text
             self.criteria_[criterion].append(str(uuid.uuid4()))
@@ -487,10 +502,13 @@ class Extractor(AssessmentScenario):
             text = repr(text)
             text = re.sub(r'"', '\\"', text)
             text = re.sub(r'\\r', '', text)
-            if option in possible_answ and self.ass.loc[self.row, 15] == 'W3C (https://www.w3.org)':
-                self.criteria_[criterion].append(repr(predefined_answ['W3C (https://www.w3.org)'][possible_answ.index(option)]))
-            elif option in possible_answ and self.ass.loc[self.row, 15] == 'IETF (https://www.ietf.org/)':
-                self.criteria_[criterion].append(repr(predefined_answ['IETF (https://www.ietf.org/)'][possible_answ.index(option)]))
+            if answer in possible_answ and self.ass.loc[self.row, 15] == 'W3C (https://www.w3.org)':
+                self.criteria_[criterion].append(
+                    re.sub(r'"', '\\"', repr(predefined_answ['W3C (https://www.w3.org)'][possible_answ.index(answer)])))
+            elif answer in possible_answ and self.ass.loc[self.row, 15] == 'IETF (https://www.ietf.org/)':
+                self.criteria_[criterion].append(
+                    re.sub(r'"', '\\"',
+                           repr(predefined_answ['IETF (https://www.ietf.org/)'][possible_answ.index(answer)])))
             else:
                 self.criteria_[criterion].append(text)
             self.criteria_[criterion].append(str(self.ass.loc[self.row, index_0]))
@@ -519,8 +537,7 @@ class Graph:
         else:
             return "This CAMSS scenario is dedicated to the assessment of formal technical specification, in general terms. According to the regulation on standardisation 1025/2012, a technical specification is a 'document that prescribes technical requirements to be fulfilled by a product, process, service or system'."
 
-    #def get_predef_judgment(self):
-
+    # def get_predef_judgment(self):
 
     def create_ass_graph(self=None):
         origin_graph_org = f'<{CAMSSA}{self.dictionary["organization"]["submitter_org_id"]}>'
@@ -572,7 +589,9 @@ class Graph:
                     origin_graph_contact_org + f' <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_ass} .',
                     file=fa)
             else:
-                print(origin_graph_contact_org + f' <{SCHEMA}email> "{self.dictionary["organization"]["L6"]}" {target_graph_ass} .', file=fa)
+                print(
+                    origin_graph_contact_org + f' <{SCHEMA}email> "{self.dictionary["organization"]["L6"]}" {target_graph_ass} .',
+                    file=fa)
             # statement
             for criterion in self.dictionary['results_in'].keys():
                 origin_graph_sta = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}>'
@@ -767,6 +786,7 @@ def __merge_graphs__():
             print()
             print("Done!")
 
+
 def convert_graph_to(target: str):
     if target.lower() == 'turtle':
         target = 'ttl'
@@ -801,12 +821,14 @@ def convert_graph_to(target: str):
             g = rdflib.ConjunctiveGraph()
             data = open(files_root + file, 'rb')
             g.parse(data, format='nquads')
+            print(file)
             if target == 'ttl':
                 g = declare_namespace(g)
             g.serialize(format=target, destination=files_root + head + '.' + extension)
     print('Transformation Done!')
     # except:
     #    pass
+
 
 def log(message: str, nl: bool = True, level: str = 'i'):
     """
@@ -899,7 +921,7 @@ def __extract_file_assessments__(root_dir: str, ass_files: list):
             Graph(extract=extractor, ass_=ass_file)
             # print(f"*{extractor.ass_dict['title']['P1']}* graph created!")
             # print()
-            #progress_bar(file, row, extractor.ass_dict['title']['P1'])
+            # progress_bar(file, row, extractor.ass_dict['title']['P1'])
     log("All graphs successfully created!")
     print()
 

@@ -25,12 +25,11 @@ The specification is under development without published releases.	40
 The specification is under development with published preview releases.	60
 The specification has published major releases but without public documentation on its supporting processes (e.g. change management and release management).	80
 The specification, in addition to having major releases available, has published documentation on its supporting processes (e.g. change management and release management).	100
-Not Applicable - The specification does not have market acceptance because it is directly used to create innovative solutions.	100
 There is no information about the specification's market uptake.	20
 The specification has known implementations but not enough to indicate market acceptance.	40
 The specification has widespread use indicating market acceptance.	60
-The specification has widespread use and relevant independent reports proving its market acceptance.	80
-The specification has widespread use, indicating market acceptance.	100
+The specification has widespread use and relevant independent reports proving its market acceptance.	100
+The specification does not have market acceptance because it is directly used to create innovative solutions.	100
 There is no community linked to the specification.	20
 Specification support is available but as part of a closed community requiring registration and possibly fees.	40
 There is no specific community to support the specification but there are public channels for the exchange of help and knowledge among its users.	60
