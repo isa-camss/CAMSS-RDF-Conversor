@@ -7,6 +7,18 @@ import re
 from tqdm.auto import tqdm
 
 ###########################################
+##### Set name of spec ####################
+###########################################
+def set_name(filename: str):
+    """
+    Sets the specification's name from the original file.
+    :param filename: filename of the specification
+    :return: a shortened name for the assessment's name
+    """
+    # name format of EIF 300 and 310 scenarios
+    return re.sub("\s+", " ", filename)
+
+###########################################
 ##### Explore function ####################
 ###########################################
 def run_all(ev):
@@ -189,10 +201,19 @@ def get_punct (criteria, ass_dict):
         else:
             total_overall_score = [overall_score, (category_range[-1][1] - category_range[0][0]) * 100]
             #str(overall_score) + '/' + str((category_range[-1][1] - category_range[0][0]) * 100)
+        total_overall_score[0] -= count_overall_notapp * 100
+        total_overall_score[1] -= count_overall_notapp * 100
         total_overall_score = [str(item) for item in total_overall_score]
         total_overall_score = '/'.join(total_overall_score)
         overall_strength = get_strength(count_overall_notapp, len(criteria))
         ass_punct.append([total_overall_score, overall_strength])
+        ass_punct.append(count_overall_notapp)
+        if criteria_short:
+            ass_punct.append(43)
+            # str(overall_score) + '/' + str((category_range[-1][1] - 1 - category_range[0][0]) * 100)
+        else:
+            ass_punct.append(44)
+
         #print(ass_punct)
         #print(criterion_score_list)
         #print(criteria)
@@ -234,3 +255,5 @@ def get_punct (criteria, ass_dict):
             print('EIF Interoperability Layers', ass_scores[4][1], ass_scores[4][2], ass_scores[4][3], sep='\t', file=f)
         print('Overall Score', ass_scores[5][0], ass_scores[5][1], '', sep='\t', file=f)
         print('', round(int(ass_scores[5][0].split("/")[0])/int(ass_scores[5][0].split("/")[1]),4), '', '', sep='\t', file=f)
+        print('not app', ass_scores[6], '', '', sep='\t', file=f)
+        print('total', ass_scores[7], '', '', sep='\t', file=f)
