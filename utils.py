@@ -108,7 +108,6 @@ def progress_bar(file: str, row: int, spec: str):
 
 def get_punct (criteria, ass_dict):
     os.makedirs('arti/punct/', exist_ok=True)
-    os.makedirs(f'arti/punct/{ass_dict["title"]["P1"]}/', exist_ok=True)
 
     def get_range(interval: tuple):
         start = interval[0]
@@ -159,7 +158,6 @@ def get_punct (criteria, ass_dict):
                 #print(criterion_score)
                 # count not applicable
                 notapp = criteria[criteria_list[i]][-1]
-                #print('notapp', notapp)
                 if notapp.lower() == 'not applicable':
                     if i != 2:
                         count_notapp += 1
@@ -220,8 +218,7 @@ def get_punct (criteria, ass_dict):
         return ass_punct
 
 
-    with open(f'arti/punct/{ass_dict["title"]["P1"]}/' + f'{ass_dict["title"]["P1"]}-EIFScenario-scores.csv', 'w', encoding='utf-8') as f:
-        print(ass_dict["title"]["P1"])
+    with open(f'arti/punct/{ass_dict["title"]["P1"]}-EIFScenario-scores.csv', 'w', encoding='utf-8') as f:
         ass_scores = run_criteria()
         # EIF Principles setting the context for EU Actions on Interoperability
         # category 1

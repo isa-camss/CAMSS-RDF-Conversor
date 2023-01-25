@@ -263,7 +263,7 @@ class Extractor(AssessmentScenario):
             self.ass_dict['status'] = None  # to review
             # the specification elements
             self.ass_dict['title'] = {}  # a new dictionary in the dictionary
-            self.ass_title = self.ass.loc[self.row, 11]  # title of the specification
+            #self.ass_title = self.ass.loc[self.row, 11]  # title of the specification
             self.ass_dict['title']['P1'] = self.ass_title  # title of the specification
             self.ass_dict['title']['spec_id'] = sha256(
                 str(self.ass_dict['title']['P1']))  # the specification identifier, the MD5 of the title
@@ -282,7 +282,9 @@ class Extractor(AssessmentScenario):
             self.ass_dict['organization']['L5'] = self.ass.loc[self.row, 5]  # submitter_phone
             self.ass_dict['organization']['L6'] = self.ass.loc[self.row, 7]  # submitter_email
             self.ass_dict['organization']['L7'] = None  # submission_date
-            self.ass_dict['organization']['uuid'] = uuid.uuid4()  # organization contact point uuid (?)
+            self.ass_dict['organization']['uuid'] = uuid.uuid4() \
+                if 'CAMSS' not in [self.ass_dict['organization']['L1'], self.ass_dict['organization']['L2']] \
+                else 'ddf032efca18c9e6eaa97bc90924977af1d96bffe564b351a6081835c75d8164'  # organization contact point uuid (?)
             # agent, SDO
             self.ass_dict['agent'] = {}  # a new dictionary in the dictionary
             sdo_name = self.ass.loc[self.row, 15]
@@ -456,13 +458,13 @@ class Extractor(AssessmentScenario):
             self.ass_dict['C5'] = self.ass.loc[self.row, 35]  # egov_interoperability
         for elem in self.ass_dict['title']:
             if type(self.ass_dict['title'][elem]) is str:
-                self.ass_dict['title'][elem] = re.sub("\s+", "", self.ass_dict['title'][elem]).strip()
+                self.ass_dict['title'][elem] = re.sub("\s+", " ", self.ass_dict['title'][elem]).strip()
         for elem in self.ass_dict['organization']:
             if type(self.ass_dict['organization'][elem]) is str:
-                self.ass_dict['organization'][elem] = re.sub("\s+", "", self.ass_dict['organization'][elem]).strip()
+                self.ass_dict['organization'][elem] = re.sub("\s+", " ", self.ass_dict['organization'][elem]).strip()
         for elem in self.ass_dict['agent']:
             if type(self.ass_dict['agent'][elem]) is str:
-                self.ass_dict['agent'][elem] = re.sub("\s+", "", self.ass_dict['agent'][elem]).strip()
+                self.ass_dict['agent'][elem] = re.sub("\s+", " ", self.ass_dict['agent'][elem]).strip()
         return
 
     def _get_criteria(self):
@@ -523,6 +525,8 @@ class Graph:
         self.ass_description = self.get_description()
         if ass_ is None:
             self.spec_title = extract.ass_title
+            print(self.spec_title)
+            #declare_namespace(ass_)
             self.create_ass_graph()
             get_punct(extract.criteria, self.dictionary)
             self.create_specs_graph()
@@ -701,7 +705,7 @@ class Graph:
                 file=fs)
 
 
-CAMSS = "http://data.europa.eu/2sa/ontology#"
+CAMSS = "http://data.europa.eu/2sa#"
 CAMSSA = "http://data.europa.eu/2sa/assessments/"
 CAV = "http://data.europa.eu/2sa/cav#"
 CCCEV = "http://data.europa.eu/m8g/cccev#"
@@ -723,7 +727,7 @@ SKOS = "http://www.w3.org/2004/02/skos/core#"
 
 # Namespaces
 def declare_namespace(g):
-    CAMSS_ = Namespace("http://data.europa.eu/2sa/ontology#")
+    CAMSS_ = Namespace("http://data.europa.eu/2sa#")
     CAMSSA_ = Namespace("http://data.europa.eu/2sa/assessments/")
     CAV_ = Namespace("http://data.europa.eu/2sa/cav#")
     CCCEV_ = Namespace("http://data.europa.eu/m8g/cccev#")
@@ -734,14 +738,14 @@ def declare_namespace(g):
     TOOL_ = Namespace("http://data.europa.eu/2sa/rsc/toolkit-version#")
     SCHEMA_ = Namespace("http://schema.org/")
     DCT_ = "http://purl.org/dc/terms/"
-    g.bind('camss', CAMSS_, replace=True)
+    g.bind('camss', CAMSS, replace=True)
     g.bind('cav', CAV_, replace=True)
-    g.bind('cssv', CSSV_)
-    g.bind('camssa', CAMSSA_)
-    g.bind('cssvrsc', CSSV_RSC_)
-    g.bind('status', STATUS_)
-    g.bind('tool', TOOL_)
-    g.bind('sc', SC_)
+    g.bind('cssv', CSSV_, replace=True)
+    g.bind('camssa', CAMSSA_, replace=True)
+    g.bind('cssvrsc', CSSV_RSC_, replace=True)
+    g.bind('status', STATUS_, replace=True)
+    g.bind('tool', TOOL_, replace=True)
+    g.bind('sc', SC_, replace=True)
     g.bind('schema', SCHEMA_, replace=True)
     g.bind('dct', DCT_, replace=True)
     g.bind('cccev', CCCEV_, replace=True)
