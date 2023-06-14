@@ -125,22 +125,24 @@ def get_punct (criteria, ass_dict):
 
     def get_compliance_level (cat: int, sc: int, ):
         compliance_level = {1: {'Ad-hoc': range(21), 'Opportunistic': [40], 'Essential': [60], 'Sustainable': [80], 'Seamless': [100]},
-                            2: {'Ad-hoc': range(0,441), 'Opportunistic': range(441, 881), 'Essential': range(881, 1321), 'Sustainable': range(1321, 1761), 'Seamless': range(1761, 2201)},
-                            3: {'Ad-hoc': range(0,101), 'Opportunistic': range(101, 201), 'Essential': range(201, 301), 'Sustainable': range(301, 401), 'Seamless': range(401, 501)},
+                            2: {'Ad-hoc': range(0,341), 'Opportunistic': range(341, 681), 'Essential': range(681, 1021), 'Sustainable': range(1021, 1361), 'Seamless': range(1361, 1701)},
+                            3: {'Ad-hoc': range(0,241), 'Opportunistic': range(241, 481), 'Essential': range(481, 721), 'Sustainable': range(721, 961), 'Seamless': range(961, 1201)},
                             4: {'Ad-hoc': range(0,101), 'Opportunistic': range(101, 201), 'Essential': range(201, 301), 'Sustainable': range(301, 401), 'Seamless': range(401, 501)},
-                            5: {'Ad-hoc': range(0,221), 'Opportunistic': range(221, 441), 'Essential': range(441, 661), 'Sustainable': range(661, 881), 'Seamless': range(881, 1100)}
+                            5: {'Ad-hoc': range(0,201), 'Opportunistic': range(201, 401), 'Essential': range(401, 601), 'Sustainable': range(601, 801), 'Seamless': range(801, 1001)}
                             }
         for level in compliance_level[cat]:
             if sc in compliance_level[cat][level]:
                 return level
 
     def run_criteria():
-        category_range = [(0, 1), (1, 23), (23, 28), (28, 33), (33, 44)]
+        category_range = [(0, 1), (1, 18), (18, 30), (30, 35), (35, 45)]
         criteria_list = list(criteria.keys())
-        if criteria[criteria_list[2]][4] == 'None':
-            criteria_short = True
-        else:
-            criteria_short = False
+
+        # if criteria[criteria_list[2]][4] == 'None':
+        #     criteria_short = True
+        # else:
+        #     criteria_short = False
+        criteria_short = False
         # list of criterion scores
         criterion_score_list = []
         ass_punct = []
@@ -150,6 +152,7 @@ def get_punct (criteria, ass_dict):
             count_notapp = 0
             rang_ = get_range(rang)
             for i in rang_:
+                #print(criteria_list[i])
                 criterion_score = criteria[criteria_list[i]][4]
                 #print('------')
                 #print('i', i)
@@ -158,9 +161,11 @@ def get_punct (criteria, ass_dict):
                 #print(criterion_score)
                 # count not applicable
                 notapp = criteria[criteria_list[i]][-1]
+                # if notapp.lower() == 'not applicable':
+                #     if i != 2:
+                #         count_notapp += 1
                 if notapp.lower() == 'not applicable':
-                    if i != 2:
-                        count_notapp += 1
+                    count_notapp += 1
                 # append
                 try:
                     if criterion_score != 'None':
@@ -190,6 +195,7 @@ def get_punct (criteria, ass_dict):
             # compliance level of the category
             compliance_level = get_compliance_level(category_range.index(rang) + 1, category_score)
             ass_punct.append([category_score, total_category_score, category_strength, compliance_level, count_notapp])
+            #print(ass_punct)
             count_overall_notapp = count_overall_notapp + count_notapp
         # overall punctuations (last element of the ass_punct list)
         overall_score = sum(punct[0] for punct in ass_punct)
@@ -198,6 +204,7 @@ def get_punct (criteria, ass_dict):
             #str(overall_score) + '/' + str((category_range[-1][1] - 1 - category_range[0][0]) * 100)
         else:
             total_overall_score = [overall_score, (category_range[-1][1] - category_range[0][0]) * 100]
+            #print(total_overall_score)
             #str(overall_score) + '/' + str((category_range[-1][1] - category_range[0][0]) * 100)
         total_overall_score[0] -= count_overall_notapp * 100
         total_overall_score[1] -= count_overall_notapp * 100
@@ -206,11 +213,12 @@ def get_punct (criteria, ass_dict):
         overall_strength = get_strength(count_overall_notapp, len(criteria))
         ass_punct.append([total_overall_score, overall_strength])
         ass_punct.append(count_overall_notapp)
-        if criteria_short:
-            ass_punct.append(43)
-            # str(overall_score) + '/' + str((category_range[-1][1] - 1 - category_range[0][0]) * 100)
-        else:
-            ass_punct.append(44)
+        # if criteria_short:
+        #     ass_punct.append(43)
+        #     # str(overall_score) + '/' + str((category_range[-1][1] - 1 - category_range[0][0]) * 100)
+        # else:
+        #     ass_punct.append(44)
+        ass_punct.append(45)
 
         #print(ass_punct)
         #print(criterion_score_list)

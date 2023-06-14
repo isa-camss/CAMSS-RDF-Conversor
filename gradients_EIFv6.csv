@@ -1,15 +1,17 @@
 Not Answered	0
 Not Applicable	100
+Not applicable	100
 The specification has not been included within the catalogue of any Member State.	20
 The specification has been included within the catalogue of a Member State with a lower performance than stated in the Digital Public Administration Factsheets from the NIFO.	40
-The specification has been included within the catalogue of a Member State with a middel-lower performance than stated in the Digital Public Administration Factsheets from the NIFO.	60
+The specification has been included within the catalogue of a Member State with a middle-lower performance than stated in the Digital Public Administration Factsheets from the NIFO.	60
 The specification has been included within the catalogue of a Member State with a middle-upper performance than stated in the Digital Public Administration Factsheets from the NIFO.	80
 The specification has been included within the catalogue of a Member State with a higher performance than stated in the Digital Public Administration Factsheets from the NIFO.	100
-The specification does not support the publication of data on the web, or does so but with a non-open licence.	20
-The specification supports publishing data on the web with an open licence and in a structured, machine-readable format.	40
-In addition to the previous question, the specification does not require proprietary software for the processing of its related data.	60
-In addition to the previous question, the specification is or incorporates open standards (e.g. W3C).	80
-In addition to the requirements stated in the previous answer, the specification supports published data as Linked Data.	100
+The specification does not support the publication of data on the web.	0
+The specification supports the publication of data on the web but under a non-open license.	20
+The specification supports the publication of data on the web with an open license, but in an unstructured format.	40
+The specification supports publication of data on the web with an open license and in a structured, machine-readable format.	60
+In addition to the previous question, the specification does not require proprietary software for the processing of its related data.	80
+In addition to the previous question, the specification is or incorporates open standards (e.g. W3C).	100
 There is no information on the working group of the specification.	20
 The working group is open to participation by any stakeholder but requires registration, fees, and membership approval.	40
 The working group is open to participation by any stakeholder but requires fees and membership approval.	60
@@ -20,6 +22,10 @@ Public review is applied to certain releases depending on the involved changes.	
 All major releases foresee a public review.	60
 All major and minor releases foresee a public review but, during which, collected feedback is not publicly visible.	80
 All major and minor releases foresee a public review during which collected feedback is publicly visible.	100
+The specification has no public definition of its Intellectual Property Right (IPR) policy or licence.	20
+Use of the specification is restricted and requires the payment of royalty fees.	40
+Use of the specification is royalty-free but imposes an Intellectual Property Right (IPR) policy or licence that goes against Fair, Reasonable and Non-Discriminatory (F/RAND) principles.	80
+Use of the specification is royalty-free and its Intellectual Property Right (IPR) policy or licence is aligned with Fair, Reasonable and Non-Discriminatory (F/RAND) principles.	100
 The specification has no published releases and no publicly accessible information on its development state.	20
 The specification is under development without published releases.	40
 The specification is under development with published preview releases.	60
@@ -50,31 +56,16 @@ The specification neither promotes nor hinders the exposure of such interfaces.	
 The specification can contribute to the exposure of interfaces, but it is not its main purpose.	60
 The specification can enable the exposure of interfaces if combined with other specifications.	80
 The specification enables exposure of such interfaces.	100
-The specification hinders the protection of personal data.	20
-The specification does not address the protection of personal data but neither prevents it.	40
-The specification includes certain data protection considerations but without being exhaustive.	60
-The specification explicitly addresses data protection but without referring to relevant regulations.	80
-The specification explicitly addresses data protection and its alignment to relevant regulations.	100
-The specification is tied to a specific domain and is restricted from being used in other domains.	20
-The specification is associated with a specific domain but its use in other domains is difficult.	40
-The specification is associated with a specific domain but could be partially used in other domains.	60
-The specification is associated with a specific domain but could be used 'as-is' to other domains.	80
-The specification is domain-agnostic, designed to be used in any domain.	100
-The specification is tied to a specific domain and is restricted from being implemented in other domains.	20
-The specification is associated with a specific domain but its implementation in other domains is difficult.	40
-The specification is associated with a specific domain but could be partially implemented in other domains.	60
-The specification is associated with a specific domain but could be implemented 'as-is' to other domains.	80
-The specification is domain-agnostic, designed to be implemented in any domain.	100
+The specification is tied to a specific domain and is restricted from being implemented or used in other domains.	20
+The specification is associated with a specific domain but its implementation and/or use in other domains is difficult.	40
+The specification is associated with a specific domain but could be partially implemented and/or used in other domains.	60
+The specification is associated with a specific domain but could be implemented and/or used 'as-is' to other domains.	80
+The specification is domain-agnostic, designed to be implemented and/or used in any domain.	100
 The specification is only meant to be used as a whole.	20
 The specification could be partially implemented but does not make specific provisions towards this.	40
 The specification could be partially implemented but includes only guidelines towards this rather than sets of requirements.	60
 The specification explicitly foresees sets of requirements that can be implemented incrementally.	80
 The specification explicitly foresees sets of requirements that can be implemented incrementally or separately.	100
-The specification prevents or does not support data portability.	20
-The specification neither addresses data portability nor prevents it.	40
-The specification addresses data portability but without specific provisions to enable it.	60
-The specification introduces certain aspects that can contribute to enabling data portability.	80
-The specification explicitly addresses and enables data portability.	100
 The specification prevents or does not support data portability.	20
 The specification neither addresses data portability nor prevents it.	40
 The specification addresses data portability but without specific provisions to enable it.	60
@@ -90,6 +81,16 @@ The specification neither addresses e-accessibility nor prevents it.	40
 The specification can contribute and promote e-accessibility, but it is not its main purpose.	60
 The specification can enable e-accessibility if combined with other specifications.	80
 The specification explicitly addresses and enables e-accessibility.	100
+The specification hinders the protection of personal data.	20
+The specification does not address the protection of personal data but neither prevents it.	40
+The specification includes certain data protection considerations but without being exhaustive.	60
+The specification explicitly addresses data protection but without referring to relevant regulations.	80
+The specification explicitly addresses data protection and its alignment to relevant regulations.	100
+The specification prevents or does not support the implementation of confidentiality mechanisms/features.	20
+The specification neither addresses confidentiality nor prevents it.	40
+The specification addresses confidentiality but without specific provisions to enable it.	60
+The specification introduces certain aspects that can contribute to enabling confidentiality.	80
+The specification explicitly addresses and enables the implementation of features to guarantee confidentiality.	100
 The specification prevents or does not support the secure and trustworthy exchange of data.	20
 The specification introduces certain aspects that can contribute to enabling the secure exchange of data.	40
 The specification addresses data security and trustworthy data exchange but does not foresee specific provisions to enable them.	60
@@ -100,12 +101,32 @@ The specification introduces certain aspects that can contribute to enabling the
 The specification addresses data security and trustworthy data processing but does not foresee specific provisions to enable them.	60
 The specification addresses data security and trustworthy data processing but specific provisions to enable them are limited.	80
 The specification explicitly addresses and enables the secure and trustworthy processing of data.	100
+The specification prevents or does not support the implementation of authentication features.	20
+The specification neither addresses authenticity nor prevents it.	40
+The specification addresses the implementation of authenticity features but without specific provisions to enable it.	60
+The specification introduces certain aspects that can contribute to enabling authenticity features.	80
+The specification explicitly addresses and enables the implementation of authenticity features.	100
+The specification prevents or does not support the implementation of data integrity mechanisms /features.	20
+The specification neither addresses data integrity nor prevents it.	40
+The specification addresses data integrity but without specific provisions to enable it.	60
+The specification introduces certain aspects that can contribute to enabling data integrity.	80
+The specification explicitly addresses and enables the implementation of features to guarantee data integrity.	100
+The specification prevents or does not support the implementation of data accuracy mechanisms/features.	20
+The specification neither addresses data accuracy nor prevents it.	40
+The specification addresses data accuracy but without specific provisions to enable it.	60
+The specification introduces certain aspects that can contribute to enabling data accuracy.	80
+The specification explicitly addresses and enables the implementation of features to guarantee data accuracy.	100
+The specification does not provide access control mechanisms.	20
+The specification neither addresses nor prevents access control mechanisms.	40
+The specification addresses access control mechanisms but without specific provisions to enable them.	60
+The specification introduces certain aspects that can contribute to enabling access control mechanisms.	80
+The specification explicitly foresees a set of requirements for the enabling of access control mechanisms.	100
 The specification cannot be used in a multilingual context.	20
 The specification could be used in a multilingual context but has no specific provisions to facilitate this.	40
 The specification foresees limited support for multilingualism.	60
 The specification foresees support for multilingualism but this is not complete.	80
 The specification is designed to fully support multilingualism.	100
-The specification prevents or does not support the long-term preservation .	20
+The specification prevents or does not support long-term preservation.	20
 The specification neither addresses the long-term preservation nor prevents it.	40
 The specification addresses the long-term preservation of electronic resources (information, data, etc) in a limited manner.	60
 The specification addresses long-term preservation of electronic resources (information, data, etc), but not in a complete manner.	80
@@ -130,3 +151,6 @@ The specification makes no provisions that would facilitate the drafting of such
 The specification defines certain elements to facilitate such agreements.	60
 The specification defines most elements to facilitate such agreements.	80
 The specification explicitly identifies all elements to be used in drafting such agreements.	100
+Yes, but at national or regional level.	50
+Yes, at European platforms.	100
+Yes, at European level.	100

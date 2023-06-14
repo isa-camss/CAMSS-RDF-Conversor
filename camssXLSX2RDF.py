@@ -54,15 +54,15 @@ class AssessmentScenario:
         """
         Takes the EU Survey output file name and extracts the scenario.
         """
-        pattern1 = re.compile(r'(\d*)-([A-Za-z][A-Za-z][A-Za-z]?)Scenario')  # previous EUSurvey format
-        pattern2 = re.compile(r'([A-Za-z][A-Za-z][A-Za-z]?)Scenario_v(\d*)')  # current EUSurvey format
+        pattern1 = re.compile(r'([A-Za-z][A-Za-z][A-Za-z]?)Scenario_v(\d*)')  # previous EUSurvey format
+        pattern2 = re.compile(r'(CAMSSAssessment)(EIF)(Scenario)(\d+)')  # current EUSurvey format CAMSSAssessmentEIFScenario6
         scenario = str(self.ass_df.loc[0, 1]).strip()
         sc1 = pattern1.search(scenario)
         sc2 = pattern2.search(scenario)
         if sc1:
-            return sc1.group(2)
+            return sc1.group(1)
         elif sc2:
-            return sc2.group(1)
+            return sc2.group(2)
 
     def get_scenario_full(self):
         """
@@ -80,19 +80,19 @@ class AssessmentScenario:
         """
         Takes the EU Survey output file name and extracts the Tool version.
         """
-        pattern1 = re.compile(r'(\d*)-([A-Za-z][A-Za-z][A-Za-z]?)Scenario')  # previous EUSurvey format
-        pattern2 = re.compile(r'([A-Za-z][A-Za-z][A-Za-z]?)Scenario_v(\d*)')  # current EUSurvey format
+        pattern1 = re.compile(r'([A-Za-z][A-Za-z][A-Za-z]?)Scenario_v(\d*)')  # previous EUSurvey format
+        pattern2 = re.compile(r'(CAMSSAssessment)(EIF)(Scenario)(\d+)')  # current EUSurvey format
         scenario = str(self.ass_df.loc[0, 1]).strip()
         vrs1 = pattern1.search(scenario)
         vrs2 = pattern2.search(scenario)
         # if self.scenario in ['MSP', 'TS']:
         #    return "1.1.0"
         if vrs1:
-            vrs1 = re.split(r'(\w)', vrs1.group(1))[1:-1]
+            vrs1 = re.split(r'(\w)', vrs1.group(2))[1:-1]
             return ".".join([el for el in vrs1 if el != ''])
         elif vrs2:
-            vrs2 = re.split(r'(\w)', vrs2.group(2))[1:-1]
-            return ".".join([el for el in vrs2 if el != ''])
+            vrs2 = re.split(r'(\w)', vrs2.group(4))
+            return "6.0.0"
 
     def get_date(self):
         """
@@ -119,7 +119,7 @@ class AssessmentScenario:
         Extracts gradients from predefined answers and creates a DataFrame.
         :return: dict
         """
-        df = p.read_csv('gradients_EIFv5.csv', sep='\t', header=None)
+        df = p.read_csv('gradients_EIFv6.csv', sep='\t', header=None)
         df = df.apply(lambda x: x.astype(str).str.lower())
         return dict(zip(df[0], df[1]))
 
@@ -477,15 +477,29 @@ class Extractor(AssessmentScenario):
                 """
         possible_answ = ['The working group is open to all without specific fees, registration, or other conditions.',
                          'All major and minor releases foresee a public review during which collected feedback is publicly visible.',
-                         'YES']
-        predefined_answ = {'W3C (https://www.w3.org)': [
-            'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard. Also, a clear Release Notes tracking the changes of the different versions is archived.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
-            'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard, including a public review.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
-            'The W3C Royalty-Free IPR licenses granted under the W3C Patent Policy apply to all W3C specifications, including this specification.\n\nW3C Patent practice:\nhttps://www.w3.org/TR/patent-practice#ref-AC'],
+                         'Use of the specification is royalty-free and its Intellectual Property Right (IPR) policy or licence is aligned with Fair, Reasonable and Non-Discriminatory (F/RAND) principles.',
+                         'The working group is open to participation by any stakeholder but requires fees and membership approval.',
+                         'All major and minor releases foresee a public review but, during which, collected feedback is not publicly visible.',
+                         'YES'
+                         ]
+        predefined_answ = {
+            'W3C (https://www.w3.org)': [
+                'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard. Also, a clear Release Notes tracking the changes of the different versions is archived.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
+                'W3C has a defined and publicly available Process for the Development and approval process of the specification as a recommended standard, including a public review.\n\nW3C Process document:\nhttps://www.w3.org/2018/Process-20180201/#Policies',
+                'The W3C Royalty-Free IPR licenses granted under the W3C Patent Policy apply to all W3C specifications, including this specification.\n\nW3C Patent practice:\nhttps://www.w3.org/TR/patent-practice#ref-AC'],
             'IETF (https://www.ietf.org/)': [
                 'IETF has a formal review and approval so that all the relevant stakeholders can formally appeal or raise objections to the development and approval of specifications.\nEach distinct version of an Internet standards-related specification is published as part of the "Request for Comments" (RFC) document series. This archival series is the official publication channel for Internet standards documents and other publications.\nDuring the development of a specification, draft versions of the document are made available for informal review and comment by placing them in the IETF\'s "Internet-Drafts" directory, which is replicated on a number of Internet hosts. This makes an evolving working document readily available to a wide audience, facilitating the process of review and revision.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/\n\nInternet Best Current Practices IETF:\nhttps://tools.ietf.org/html/rfc2026',
                 'The IETF is a consensus-based group, and authority to act on behalf of the community requires a high degree of consensus and the continued consent of the community. The process of creating and Internet Standard is straightforward: a specification undergoes a period of development and several iterations of review by the Internet community and revision based upon experience, is adopted as a Standard by the appropriate body... and is published. In practice, the process is more complicated, due to (1) the difficulty of creating specifications of high technical quality; (2) the need to consider the interests of all the affected parties; (3) the importance of establishing widespread community consensus; and (4) the difficulty of evaluating the utility of a particular specification for the Internet community. The goals of the Internet Standards Process are:\n- Technical excellence;\n- prior implementation and testing;\n- clear, concise, and easily understood documentation;\n- openness and fairness; and\n- timeliness.\nThe goal of technical competence, the requirement for prior implementation and testing, and the need to allow all interested parties to comment all require significant time and effort. The Internet Standards Process is intended to balance these conflicting goals. The process is believed to be as short and simple as possible without sacrificing technical excellence, thorough testing before adoption of a standard, or openness and fairness.\n\nStandard process IETF:\nhttps://www.ietf.org/standards/process/',
-                'Like all the IETF standards, this specification is a free and open technical specification, built on IETF standards and licenses from the Open Web Foundation. Therefore it is licensed on a royalty-free basis.\nNo IPR disclosures have been submitted directly on this RFC.\n\nIntellectual Property Rights in IETF:\nhttps://tools.ietf.org/doc/html/rfc8179']}
+                'Like all the IETF standards, this specification is a free and open technical specification, built on IETF standards and licenses from the Open Web Foundation. Therefore it is licensed on a royalty-free basis.\nNo IPR disclosures have been submitted directly on this RFC.\n\nIntellectual Property Rights in IETF:\nhttps://tools.ietf.org/doc/html/rfc8179'],
+            'ETSI (https://www.etsi.org/)' : [
+                '',
+                '',
+                'The ETSI IPR Policy which is part of the ETSI directives seeks to reduce the risk that our standards-making efforts might be wasted if SEPs are unavailable under Fair, Reasonable and Non-Discriminatory (FRAND) terms and conditions.\nThe main objective of the ETSI IPR Policy is to balance the rights and interests of IPR holders to be fairly and adequately rewarded for the use of their SEPs in the implementation of ETSI standards and the need for implementers to get access to the technology defined in ETSI standards under FRAND terms and conditions.\n\nETSI’s intellectual property rights policy:\nhttps://www.etsi.org/intellectual-property-rights',
+                'ETSI’s standards-making process has been clearly defined after years of experience. The organisation has adopted the open approach which means direct participation and consensus as a basis to develop standards. All the stakeholders have the opportunity to participate directly in the process of standardisation through the technical committees created to develop ETSI’s technical specifications and standards.\n\nETSI Standard-making process:\nhttps://portal.etsi.org/Resources/Standards-Making-Process/Process',
+                'ETSI’s decision-making process includes a public review, where stakeholders involved can provide technical feedback in order to enhance and maximize the quality and accuracy of the standards.\n\nETSI standard-making process:\nhttps://portal.etsi.org/Resources/Standards-Making-Process/Process',
+                'ETSI is a European standards development organisation, and as such, all the specifications developed within the organisation are available and can be accessed through its website repository.\n\nETSI standards repository:\nhttps://www.etsi.org/standards#page=1&search=ETSI%20TS%20319%20422&title=1&etsiNumber=1&content=1&version=0&onApproval=1&published=1&withdrawn=1&historical=1&isCurrent=1&superseded=1&startDate=1988-01-15&endDate=2022-07-25&harmonized=0&keyword=&TB=&stdType=&frequency=&mandate=&collection=&sort=1']
+            }
+
         for criterion in self.criteria_.keys():
             index_0 = self.criteria_[criterion][0]
             index = index_0 + 1
@@ -504,13 +518,17 @@ class Extractor(AssessmentScenario):
             text = repr(text)
             text = re.sub(r'"', '\\"', text)
             text = re.sub(r'\\r', '', text)
-            if answer in possible_answ and self.ass.loc[self.row, 15] == 'W3C (https://www.w3.org)':
+            if answer in possible_answ[:3] and self.ass.loc[self.row, 15] == 'W3C (https://www.w3.org)':
                 self.criteria_[criterion].append(
                     re.sub(r'"', '\\"', repr(predefined_answ['W3C (https://www.w3.org)'][possible_answ.index(answer)])))
-            elif answer in possible_answ and self.ass.loc[self.row, 15] == 'IETF (https://www.ietf.org/)':
+            elif answer in possible_answ[:3] and self.ass.loc[self.row, 15] == 'IETF (https://www.ietf.org/)':
                 self.criteria_[criterion].append(
                     re.sub(r'"', '\\"',
                            repr(predefined_answ['IETF (https://www.ietf.org/)'][possible_answ.index(answer)])))
+            elif answer in possible_answ and self.ass.loc[self.row, 15] == 'ETSI (https://www.etsi.org/)':
+                self.criteria_[criterion].append(
+                    re.sub(r'"', '\\"',
+                           repr(predefined_answ['ETSI (https://www.etsi.org/)'][possible_answ.index(answer)])))
             else:
                 self.criteria_[criterion].append(text)
             self.criteria_[criterion].append(str(self.ass.loc[self.row, index_0]))
@@ -525,7 +543,12 @@ class Graph:
         self.ass_description = self.get_description()
         if ass_ is None:
             self.spec_title = extract.ass_title
-            print(self.spec_title)
+            print()
+            files = get_files('arti/out/ass/nq/')
+            if f'{self.sc}-{self.tool_version}-CAMSSAssessment_{self.spec_title}.nq' not in files:
+                print(self.spec_title)
+            else:
+                print(self.spec_title, "\n", "Reminder: This CAMSS Assessments is already in your local folder!")
             #declare_namespace(ass_)
             self.create_ass_graph()
             get_punct(extract.criteria, self.dictionary)
@@ -548,76 +571,78 @@ class Graph:
         origin_graph_contact_org = f'<{CAMSSA}{self.dictionary["organization"]["uuid"]}>'
         origin_graph_ass = f'<{CAMSSA}{self.dictionary["assessment_id"]}>'
         target_graph_ass = f'<{CAMSSA}>'
-        with open('arti/out/ass/nq/' + f'{self.sc}-{self.tool_version}-CAMSSAssessment_{self.spec_title}.nq', 'w',
-                  encoding='utf-8') as fa:
-            # assessment
-            print(origin_graph_ass + f' <{RDF}type> <{CAV}Assessment> {target_graph_ass} .', file=fa)
-            print(origin_graph_ass + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
-            print(
-                origin_graph_ass + f' <{CAMSS}assesses> <{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_ass + f' <{CAMSS}assessmentDate> "{self.dictionary["assessment_date"]}"^^<{XSD}date> {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_ass + f' <{CAMSS}submissionDate> "{self.dictionary["organization"]["L7"]}"^^<{XSD}date> {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_ass + f' <{CAMSS}toolVersion> <{TOOL}{self.dictionary["tool_version"]}> {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_ass + f' <{CAV}contextualisedBy> <{SC}{self.dictionary["contextualised_by"]["scenario_id"]}> {target_graph_ass} .',
-                file=fa)
-            for criterion in self.dictionary['results_in'].keys():
+        files = get_files('arti/out/ass/nq/')
+        if f'{self.sc}-{self.tool_version}-CAMSSAssessment_{self.spec_title}.nq' not in files:
+            with open('arti/out/ass/nq/' + f'{self.sc}-{self.tool_version}-CAMSSAssessment_{self.spec_title}.nq', 'w',
+                      encoding='utf-8') as fa:
+                # assessment
+                print(origin_graph_ass + f' <{RDF}type> <{CAV}Assessment> {target_graph_ass} .', file=fa)
+                print(origin_graph_ass + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
                 print(
-                    origin_graph_ass + f' <{CAV}resultsIn> <{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}> {target_graph_ass} .',
-                    file=fa)
-            print(origin_graph_ass + f' <{CAV}status> <{STATUS}Complete> {target_graph_ass} .', file=fa)
-            print(origin_graph_ass + f' <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_ass} .',
-                  file=fa)
-            # organization
-            print(origin_graph_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
-            print(origin_graph_org + f' <{RDF}type> <{ORG}Organization> {target_graph_ass} .', file=fa)
-            print(
-                origin_graph_org + f' <{CAMSS}contactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_org + f' <{SKOS}prefLabel> "{self.dictionary["organization"]["L1"]} {self.dictionary["organization"]["L2"]}"@en {target_graph_ass} .',
-                file=fa)
-            print(
-                origin_graph_contact_org + f' <{RDF}type> <{SCHEMA}ContactPoint> {target_graph_ass} .',
-                file=fa)
-            print(origin_graph_contact_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
-            if self.dictionary["organization"]["L6"] == 'nan':
-                print(
-                    origin_graph_contact_org + f' <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_ass} .',
-                    file=fa)
-            else:
-                print(
-                    origin_graph_contact_org + f' <{SCHEMA}email> "{self.dictionary["organization"]["L6"]}" {target_graph_ass} .',
-                    file=fa)
-            # statement
-            for criterion in self.dictionary['results_in'].keys():
-                origin_graph_sta = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}>'
-                print(origin_graph_sta + f' <{RDF}type> <{CAV}Statement> {target_graph_ass} .', file=fa)
-                print(origin_graph_sta + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
-                print(
-                    origin_graph_sta + f' <{CAV}judgement> "{self.dictionary["results_in"][criterion]["statement"]}"@en {target_graph_ass} .',
+                    origin_graph_ass + f' <{CAMSS}assesses> <{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> {target_graph_ass} .',
                     file=fa)
                 print(
-                    origin_graph_sta + f' <{CAV}refersTo> <{CAMSSA}{self.dictionary["results_in"][criterion]["score_id"]}> {target_graph_ass} .',
-                    file=fa)
-            # score
-            for criterion in self.dictionary['results_in'].keys():
-                origin_graph_sco = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["score_id"]}>'
-                print(origin_graph_sco + f' <{RDF}type> <{CAV}Score> {target_graph_ass} .', file=fa)
-                print(origin_graph_sco + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
-                print(
-                    origin_graph_sco + f' <{CAV}assignedTo> <{SC}c-{self.dictionary["results_in"][criterion]["criterion_sha_id"]}> {target_graph_ass} .',
+                    origin_graph_ass + f' <{CAMSS}assessmentDate> "{self.dictionary["assessment_date"]}"^^<{XSD}date> {target_graph_ass} .',
                     file=fa)
                 print(
-                    origin_graph_sco + f' <{CAV}value> "{self.dictionary["results_in"][criterion]["score"]}"^^<{XSD}int> {target_graph_ass} .',
-                    file=fa)  # mirar >int antes >:int
+                    origin_graph_ass + f' <{CAMSS}submissionDate> "{self.dictionary["organization"]["L7"]}"^^<{XSD}date> {target_graph_ass} .',
+                    file=fa)
+                print(
+                    origin_graph_ass + f' <{CAMSS}toolVersion> <{TOOL}{self.dictionary["tool_version"]}> {target_graph_ass} .',
+                    file=fa)
+                print(
+                    origin_graph_ass + f' <{CAV}contextualisedBy> <{SC}{self.dictionary["contextualised_by"]["scenario_id"]}> {target_graph_ass} .',
+                    file=fa)
+                for criterion in self.dictionary['results_in'].keys():
+                    print(
+                        origin_graph_ass + f' <{CAV}resultsIn> <{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}> {target_graph_ass} .',
+                        file=fa)
+                print(origin_graph_ass + f' <{CAV}status> <{STATUS}Complete> {target_graph_ass} .', file=fa)
+                print(origin_graph_ass + f' <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_ass} .',
+                      file=fa)
+                # organization
+                print(origin_graph_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+                print(origin_graph_org + f' <{RDF}type> <{ORG}Organization> {target_graph_ass} .', file=fa)
+                print(
+                    origin_graph_org + f' <{CAMSS}contactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
+                    file=fa)
+                print(
+                    origin_graph_org + f' <{SKOS}prefLabel> "{self.dictionary["organization"]["L1"]} {self.dictionary["organization"]["L2"]}"@en {target_graph_ass} .',
+                    file=fa)
+                print(
+                    origin_graph_contact_org + f' <{RDF}type> <{SCHEMA}ContactPoint> {target_graph_ass} .',
+                    file=fa)
+                print(origin_graph_contact_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+                if self.dictionary["organization"]["L6"] == 'nan':
+                    print(
+                        origin_graph_contact_org + f' <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_ass} .',
+                        file=fa)
+                else:
+                    print(
+                        origin_graph_contact_org + f' <{SCHEMA}email> "{self.dictionary["organization"]["L6"]}" {target_graph_ass} .',
+                        file=fa)
+                # statement
+                for criterion in self.dictionary['results_in'].keys():
+                    origin_graph_sta = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}>'
+                    print(origin_graph_sta + f' <{RDF}type> <{CAV}Statement> {target_graph_ass} .', file=fa)
+                    print(origin_graph_sta + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+                    print(
+                        origin_graph_sta + f' <{CAV}judgement> "{self.dictionary["results_in"][criterion]["statement"]}"@en {target_graph_ass} .',
+                        file=fa)
+                    print(
+                        origin_graph_sta + f' <{CAV}refersTo> <{CAMSSA}{self.dictionary["results_in"][criterion]["score_id"]}> {target_graph_ass} .',
+                        file=fa)
+                # score
+                for criterion in self.dictionary['results_in'].keys():
+                    origin_graph_sco = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["score_id"]}>'
+                    print(origin_graph_sco + f' <{RDF}type> <{CAV}Score> {target_graph_ass} .', file=fa)
+                    print(origin_graph_sco + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+                    print(
+                        origin_graph_sco + f' <{CAV}assignedTo> <{SC}c-{self.dictionary["results_in"][criterion]["criterion_sha_id"]}> {target_graph_ass} .',
+                        file=fa)
+                    print(
+                        origin_graph_sco + f' <{CAV}value> "{self.dictionary["results_in"][criterion]["score"]}"^^<{XSD}int> {target_graph_ass} .',
+                        file=fa)  # mirar >int antes >:int
 
     def create_criteria_graph(self=None):
         origin_graph_cri = f'<{SC}{self.dictionary["contextualised_by"]["scenario_id"]}>'
@@ -648,61 +673,63 @@ class Graph:
 
     def create_specs_graph(self=None):
         target_graph_spe = f'<{CSSV_RSC}>'
-        with open('arti/out/specs/nq/' + f'{self.spec_title}.nq', 'w') as fs:
-            # specification ContactPoint
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{RDF}type> <{SCHEMA}ContactPoint> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{CSSV}isContactPointOf> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
-                file=fs)
-            if self.dictionary["agent"]["P4"] != self.dictionary["agent"]["P4"]:
+        files = get_files('arti/out/specs/nq/')
+        if not f'{self.spec_title}.nq' not in files:
+            with open('arti/out/specs/nq/' + f'{self.spec_title}.nq', 'w') as fs:
+                # specification ContactPoint
                 print(
-                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_spe} .',
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{RDF}type> <{SCHEMA}ContactPoint> {target_graph_spe} .',
                     file=fs)
-            else:
                 print(
-                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "{self.dictionary["agent"]["P4"]}" {target_graph_spe} .',
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
                     file=fs)
-            # specification Standard
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{CSSV}{self.dictionary["spec_type"]}> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{CSSV}isMaintainedBy> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCAT}distribution> <{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> {target_graph_spe} .',
-                file=fs)
-            # specification Distribution
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{RDF}type> <{DCAT}Distribution> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{DCAT}accessURL> "{self.dictionary["title"]["P2"]}"^^<{XSD}anyURI> {target_graph_spe} .',
-                file=fs)
-            # specification Organization
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> <{RDF}type> <{ORG}Organization> {target_graph_spe} .',
-                file=fs)
-            print(
-                f'<{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> <{SKOS}prefLabel> "{self.dictionary["agent"]["P3"]}"^^<{XSD}string> {target_graph_spe} .',
-                file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{CSSV}isContactPointOf> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
+                    file=fs)
+                if self.dictionary["agent"]["P4"] != self.dictionary["agent"]["P4"]:
+                    print(
+                        f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "NaN"^^<{XSD}double> {target_graph_spe} .',
+                        file=fs)
+                else:
+                    print(
+                        f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}email> "{self.dictionary["agent"]["P4"]}" {target_graph_spe} .',
+                        file=fs)
+                # specification Standard
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{CSSV}{self.dictionary["spec_type"]}> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{CSSV}isMaintainedBy> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCAT}distribution> <{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> {target_graph_spe} .',
+                    file=fs)
+                # specification Distribution
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{RDF}type> <{DCAT}Distribution> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{DCAT}accessURL> "{self.dictionary["title"]["P2"]}"^^<{XSD}anyURI> {target_graph_spe} .',
+                    file=fs)
+                # specification Organization
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> <{RDF}type> <{ORG}Organization> {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> <{SKOS}prefLabel> "{self.dictionary["agent"]["P3"]}"^^<{XSD}string> {target_graph_spe} .',
+                    file=fs)
 
 
 CAMSS = "http://data.europa.eu/2sa#"
@@ -788,6 +815,8 @@ def __merge_graphs__():
             log(f'Merging CAMSS Assessments Graphs, CAMSS Scenarios and Critera Graphs and Specifications Graphs into (cumulative) NQuads dataset files...',
                 nl=False)
             print()
+            print("WARNING: this merge action is only covering the CAMSS Assessments you converted in your personal folder...","\n"
+                  "... the merge file to be shared with CELLAR should also include the CAMSS Scenario criteria (find in /crit folder")
             print("Done!")
 
 
@@ -926,9 +955,6 @@ def __extract_file_assessments__(root_dir: str, ass_files: list):
             # print(f"*{extractor.ass_dict['title']['P1']}* graph created!")
             # print()
             # progress_bar(file, row, extractor.ass_dict['title']['P1'])
-    log("All graphs successfully created!")
-    print()
-
 
 def slash(path) -> str:
     """
@@ -980,6 +1006,9 @@ def __pipeline__(input_folder: str):
             __help__()
             return
         __extract_file_assessments__(path, get_files(path))
+    print()
+    log("All graphs successfully created!")
+    print()
 
 
 def main(argv: []):
