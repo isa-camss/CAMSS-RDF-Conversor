@@ -4,13 +4,15 @@ import sys
 import glob
 import uuid
 import hashlib
+import datetime
 import pandas as p
 import logging
 from pathlib import PurePath
 import pandas as pd
 import rdflib
 from rdflib import Namespace
-from utils import progress_bar, get_punct
+
+import utils
 
 
 class AssessmentScenario:
@@ -21,6 +23,7 @@ class AssessmentScenario:
     ass_df: p.DataFrame  # data structure (DataFrame type)
     scenario: str  # scenario for the assessments (string type)
     scenario_full: str  # scenario full name (string type)
+    url_scenario: str # EUSurvey URL scenario
     tool_version: str  # current Assessments Toolkit Version (string type)
     ass_date: str  # date of export of the EU Survey output (string type)
     criteria: dict  # criteria dictionary, used by child class Extractor
@@ -36,6 +39,7 @@ class AssessmentScenario:
         self.ass_df = self.open_file()  # assessments stored in DataFrame
         self.scenario = self.get_scenario()  # assessments scenario
         self.scenario_full = self.get_scenario_full()  # the assessment scenario full name
+        self.url_scenario = self.get_url_eusurvey() # the EUSurvey URL of the CAMSS Assessment Scenario
         self.tool_version = self.get_version()  # EU Survey/CAMSS Tool version
         self.ass_date = self.get_date()  # assessment date
         self.get_criteria()
@@ -75,6 +79,12 @@ class AssessmentScenario:
             return 'Multi-Stakeholder Platform (MSP)'
         elif self.scenario == 'TS':
             return 'ICT Specification (TS)'
+
+    def get_url_eusurvey(self):
+        """
+        Takes the EU Survey URL.
+        """
+        return str("https://ec.europa.eu/eusurvey/runner/" + str(self.ass_df.loc[0, 1]).strip())
 
     def get_version(self):
         """
@@ -130,11 +140,11 @@ class AssessmentScenario:
         # common key elements for EIF, MSP and ICT
         dict_keys = ['assessment_id', 'assessment_date', 'submission_date', 'tool_version', 'tool_release_date',
                      'contextualised_by', 'results_in', 'status', 'title', 'organization', 'agent', 'P5', 'P6', 'C1',
-                     'C2', 'C3', 'C4', 'C5', 'P7', 'P8', 'P9', 'P10', 'io_spec_type']
+                     'C2', 'C3', 'C4', 'C5', 'P7', 'P8', 'P9', 'P10', 'io_spec_type', 'url_eusurvey']
         # main dictionary keys
         self.ass_dict = dict.fromkeys(dict_keys)
         # common elements for EIF, MSP and ICT
-        self.ass_dict['assessment_date'] = None  # date of the assessment
+        self.ass_dict['assessment_date'] = str(datetime.date.today())  # date of the assessment
         self.ass_dict['submission_date'] = None  # assessment submission date
         self.ass_dict['tool_version'] = self.tool_version  # EU Survey/CAMSS Tool version
         self.ass_dict['tool_release_date'] = None  # Tool release date
@@ -145,6 +155,7 @@ class AssessmentScenario:
         self.ass_dict['contextualised_by']['scenario_id'] = sha256(
             self.scenario + '-' + str(self.tool_version))  # the scenario identifier
         self.ass_dict['contextualised_by']['L8'] = self.scenario_full  # the assessment scenario full name
+        self.ass_dict['url_eusurvey'] = self.url_scenario
 
 
 class Extractor(AssessmentScenario):
@@ -265,6 +276,8 @@ class Extractor(AssessmentScenario):
             self.ass_dict['title'] = {}  # a new dictionary in the dictionary
             #self.ass_title = self.ass.loc[self.row, 11]  # title of the specification
             self.ass_dict['title']['P1'] = self.ass_title  # title of the specification
+            self.ass_dict['title']['description'] = self.ass.loc[self.row, 13]  # description of the specification
+            self.ass_dict['title']['version'] = self.ass.loc[self.row, 12]  # description of the specification
             self.ass_dict['title']['spec_id'] = sha256(
                 str(self.ass_dict['title']['P1']))  # the specification identifier, the MD5 of the title
             self.ass_dict['title']['distribution_id'] = str(uuid.uuid4())  # distribution_id
@@ -289,9 +302,10 @@ class Extractor(AssessmentScenario):
             self.ass_dict['agent'] = {}  # a new dictionary in the dictionary
             sdo_name = self.ass.loc[self.row, 15]
             if sdo_name == 'Other (SDO/SSO)':
-                self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
-                if self.ass_dict['agent']['P3'] == self.ass_dict['title']['P1']:
-                    self.ass_dict['agent']['P3'] = self.ass_dict['agent']['P3'] + ' (SDO/SSO)'
+                sdo_url = self.ass.loc[self.row, 17]
+                self.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16] + f" ({sdo_url})"
+                # if self.ass_dict['agent']['P3'] == self.ass_dict['title']['P1']:
+                #     self.ass_dict['agent']['P3'] = self.ass_dict['agent']['P3'] + ' (SDO/SSO)'
                 # sdo_nameself.ass_dict['agent']['P3'] = self.ass.loc[self.row, 16]
                 # find for parenthesis, i.e. short names
                 # sdo_name_ = re.split('[() ]', sdo_name)
@@ -372,7 +386,7 @@ class Extractor(AssessmentScenario):
             self.ass_dict['agent']['sdo_id'] = sha256(
                 str(self.ass_dict['agent']['P3']))  # sdo_id (for the Agent instance)
             self.ass_dict['agent']['P4'] = self.ass.loc[self.row, 13]  # sdo_contact_point
-            self.ass_dict['agent']['uuid'] = uuid.uuid4()  # agent contact point uuid (?)
+            self.ass_dict['agent']['uuid'] = uuid.uuid4()  # agent contact point uuid (?) aqui
             # submission_rationale
             self.ass_dict['P5'] = self.ass.loc[self.row, 14]  # submission_rationale
             # 'other_evaluations'
@@ -541,6 +555,7 @@ class Graph:
         self.tool_version = extract.tool_version
         self.dictionary = extract.ass_dict
         self.ass_description = self.get_description()
+        self.criteria = extract.criteria
         if ass_ is None:
             self.spec_title = extract.ass_title
             print()
@@ -551,7 +566,10 @@ class Graph:
                 print(self.spec_title, "\n", "Reminder: This CAMSS Assessments is already in your local folder!")
             #declare_namespace(ass_)
             self.create_ass_graph()
-            get_punct(extract.criteria, self.dictionary)
+            os.makedirs('arti/punct/', exist_ok=True)
+            calculator = utils.PunctuationCalculator(self.criteria, self.dictionary)
+            calculator.generate_punctuation_file()
+            #get_punct(extract.criteria, self.dictionary)
             self.create_specs_graph()
         else:
             self.create_criteria_graph()
@@ -570,6 +588,7 @@ class Graph:
         origin_graph_org = f'<{CAMSSA}{self.dictionary["organization"]["submitter_org_id"]}>'
         origin_graph_contact_org = f'<{CAMSSA}{self.dictionary["organization"]["uuid"]}>'
         origin_graph_ass = f'<{CAMSSA}{self.dictionary["assessment_id"]}>'
+        origin_graph_global_sco = f'<{CAMSSA}{uuid.uuid4()}>'
         target_graph_ass = f'<{CAMSSA}>'
         files = get_files('arti/out/ass/nq/')
         if f'{self.sc}-{self.tool_version}-CAMSSAssessment_{self.spec_title}.nq' not in files:
@@ -579,17 +598,20 @@ class Graph:
                 print(origin_graph_ass + f' <{RDF}type> <{CAV}Assessment> {target_graph_ass} .', file=fa)
                 print(origin_graph_ass + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
                 print(
-                    origin_graph_ass + f' <{CAMSS}assesses> <{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> {target_graph_ass} .',
+                    origin_graph_ass + f' <{CAV}assesses> <{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> {target_graph_ass} .',
                     file=fa)
+                # print(
+                #     origin_graph_ass + f' <{CAMSS}assessmentDate> "{self.dictionary["assessment_date"]}"^^<{XSD}date> {target_graph_ass} .',
+                #     file=fa)
                 print(
-                    origin_graph_ass + f' <{CAMSS}assessmentDate> "{self.dictionary["assessment_date"]}"^^<{XSD}date> {target_graph_ass} .',
+                    origin_graph_ass + f' <{DCT}issued> "{self.dictionary["assessment_date"]}"^^<{XSD}date> {target_graph_ass} .',
                     file=fa)
-                print(
-                    origin_graph_ass + f' <{CAMSS}submissionDate> "{self.dictionary["organization"]["L7"]}"^^<{XSD}date> {target_graph_ass} .',
-                    file=fa)
-                print(
-                    origin_graph_ass + f' <{CAMSS}toolVersion> <{TOOL}{self.dictionary["tool_version"]}> {target_graph_ass} .',
-                    file=fa)
+                # print(
+                #     origin_graph_ass + f' <{CAMSS}submissionDate> "{self.dictionary["organization"]["L7"]}"^^<{XSD}date> {target_graph_ass} .',
+                #     file=fa)
+                # print(
+                #     origin_graph_ass + f' <{CAMSS}toolVersion> <{TOOL}{self.dictionary["tool_version"]}> {target_graph_ass} .',
+                #     file=fa)
                 print(
                     origin_graph_ass + f' <{CAV}contextualisedBy> <{SC}{self.dictionary["contextualised_by"]["scenario_id"]}> {target_graph_ass} .',
                     file=fa)
@@ -597,14 +619,35 @@ class Graph:
                     print(
                         origin_graph_ass + f' <{CAV}resultsIn> <{CAMSSA}{self.dictionary["results_in"][criterion]["statement_id"]}> {target_graph_ass} .',
                         file=fa)
-                print(origin_graph_ass + f' <{CAV}status> <{STATUS}Complete> {target_graph_ass} .', file=fa)
+                #print(origin_graph_ass + f' <{CAV}status> <{STATUS}Complete> {target_graph_ass} .', file=fa)
                 print(origin_graph_ass + f' <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_ass} .',
                       file=fa)
+                print(origin_graph_ass + f' <{PAV}version> "1.0.0"@en {target_graph_ass} .',
+                      file=fa)
+                print(origin_graph_ass + f' <{CAV}performedBy> {origin_graph_org} {target_graph_ass} .',
+                      file=fa)
+                print(origin_graph_ass + f' <{CAV}considers> {origin_graph_global_sco} {target_graph_ass} .',
+                      file=fa)
+                ass_distribution = uuid.uuid4()
+                print(origin_graph_ass + f' <{DCAT}distribution> <{CAMSSA}{ass_distribution}> {target_graph_ass} .',
+                      file=fa)
+                print(
+                    f'<{CAMSSA}{ass_distribution}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .',
+                    file=fa)
+                print(
+                    f'<{CAMSSA}{ass_distribution}> <{RDF}type> <{DCAT}Distribution> {target_graph_ass} .',
+                    file=fa)
+                print(
+                    f'<{CAMSSA}{ass_distribution}> <{DCAT}accessURL> "https://joinup.ec.europa.eu/collection/common-assessment-method-standards-and-specifications-camss"^^<{XSD}anyURI> {target_graph_ass} .',
+                    file=fa)
                 # organization
                 print(origin_graph_org + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
                 print(origin_graph_org + f' <{RDF}type> <{ORG}Organization> {target_graph_ass} .', file=fa)
+                # print(
+                #     origin_graph_org + f' <{CAMSS}contactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
+                #     file=fa)
                 print(
-                    origin_graph_org + f' <{CAMSS}contactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
+                    origin_graph_org + f' <{SCHEMA}contactPoint> <{CAMSSA}{self.dictionary["organization"]["uuid"]}> {target_graph_ass} .',
                     file=fa)
                 print(
                     origin_graph_org + f' <{SKOS}prefLabel> "{self.dictionary["organization"]["L1"]} {self.dictionary["organization"]["L2"]}"@en {target_graph_ass} .',
@@ -632,6 +675,18 @@ class Graph:
                     print(
                         origin_graph_sta + f' <{CAV}refersTo> <{CAMSSA}{self.dictionary["results_in"][criterion]["score_id"]}> {target_graph_ass} .',
                         file=fa)
+                # global score
+                # Create an instance of the class
+                calculator = utils.PunctuationCalculator(self.criteria, self.dictionary)
+                # Run the criteria analysis
+                ass_punct = calculator.run_criteria()
+                # Get the total_overall_score and overall_strength values
+                total_overall_score = ass_punct[5][0]  # The total_overall_score is the second to last element
+                overall_strength = ass_punct[5][1]  # The overall_strength is the last element
+                print(origin_graph_global_sco + f' <{RDF}type> <{CAV}Score> {target_graph_ass} .', file=fa)
+                print(origin_graph_global_sco + f' <{RDF}type> <{OWL}NamedIndividual> {target_graph_ass} .', file=fa)
+                print(origin_graph_global_sco + f' <{CAV}value> "{round((int(total_overall_score.split("/")[0])/int(total_overall_score.split("/")[1]))*100,2)}%AssessmentScoreAverage"^^<{XSD}string> {target_graph_ass} .', file=fa)
+                print(origin_graph_global_sco + f' <{CAV}value> "{round(overall_strength, 2)}%StrengthOfAssessmentScoreAverage"^^<{XSD}string> {target_graph_ass} .', file=fa)
                 # score
                 for criterion in self.dictionary['results_in'].keys():
                     origin_graph_sco = f'<{CAMSSA}{self.dictionary["results_in"][criterion]["score_id"]}>'
@@ -641,7 +696,7 @@ class Graph:
                         origin_graph_sco + f' <{CAV}assignedTo> <{SC}c-{self.dictionary["results_in"][criterion]["criterion_sha_id"]}> {target_graph_ass} .',
                         file=fa)
                     print(
-                        origin_graph_sco + f' <{CAV}value> "{self.dictionary["results_in"][criterion]["score"]}"^^<{XSD}int> {target_graph_ass} .',
+                        origin_graph_sco + f' <{CAV}value> "{self.dictionary["results_in"][criterion]["score"]}"^^<{XSD}string> {target_graph_ass} .',
                         file=fa)  # mirar >int antes >:int
 
     def create_criteria_graph(self=None):
@@ -660,8 +715,17 @@ class Graph:
             print(
                 origin_graph_cri + f' <{CAV}purpose> ""@en '
                                    f'{target_graph_cri} .', file=fc)
+            # print(
+            #     origin_graph_cri + f' <{DCT}title> "{self.dictionary["contextualised_by"]["scenario"]}({self.dictionary["tool_version"]})"@en {target_graph_cri} .',
+            #     file=fc)
             print(
-                origin_graph_cri + f' <{DCT}title> "{self.dictionary["contextualised_by"]["scenario"]}({self.dictionary["tool_version"]})"@en {target_graph_cri} .',
+                origin_graph_cri + f' <{DCT}title> "{self.dictionary["contextualised_by"]["scenario"]}"@en {target_graph_cri} .',
+                file=fc)
+            print(
+                origin_graph_cri + f' <{OWL}versionInfo> "{self.dictionary["tool_version"]}"@en {target_graph_cri} .',
+                file=fc)
+            print(
+                origin_graph_cri + f' <{DCAT}landingPage> "{self.dictionary["url_eusurvey"]}"^^<{XSD}anyURI> {target_graph_cri} .',
                 file=fc)
             for criterion in self.dictionary['results_in'].keys():
                 cri_sha_id = self.dictionary["results_in"][criterion]["criterion_sha_id"]
@@ -674,7 +738,7 @@ class Graph:
     def create_specs_graph(self=None):
         target_graph_spe = f'<{CSSV_RSC}>'
         files = get_files('arti/out/specs/nq/')
-        if not f'{self.spec_title}.nq' not in files:
+        if f'{self.spec_title}.nq' not in files:
             with open('arti/out/specs/nq/' + f'{self.spec_title}.nq', 'w') as fs:
                 # specification ContactPoint
                 print(
@@ -684,7 +748,7 @@ class Graph:
                     f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
                     file=fs)
                 print(
-                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{CSSV}isContactPointOf> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
+                    f'<{CSSV_RSC}{self.dictionary["agent"]["uuid"]}> <{SCHEMA}contactPoint> <{CSSV_RSC}{self.dictionary["agent"]["sdo_id"]}> {target_graph_spe} .',
                     file=fs)
                 if self.dictionary["agent"]["P4"] != self.dictionary["agent"]["P4"]:
                     print(
@@ -698,6 +762,10 @@ class Graph:
                 print(
                     f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{CSSV}{self.dictionary["spec_type"]}> {target_graph_spe} .',
                     file=fs)
+                # if self.dictionary["spec_type"] != "Specification":
+                #     print(
+                #         f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{CSSV}Specification> {target_graph_spe} .',
+                #         file=fs)
                 print(
                     f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{RDF}type> <{OWL}NamedIndividual> {target_graph_spe} .',
                     file=fs)
@@ -706,6 +774,12 @@ class Graph:
                     file=fs)
                 print(
                     f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCT}title> "{self.dictionary["title"]["P1"]}"@en {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCT}description> "{self.dictionary["title"]["description"]}"@en {target_graph_spe} .',
+                    file=fs)
+                print(
+                    f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{PAV}version> "{self.dictionary["title"]["version"]}"@en {target_graph_spe} .',
                     file=fs)
                 print(
                     f'<{CSSV_RSC}{self.dictionary["title"]["spec_id"]}> <{DCAT}distribution> <{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> {target_graph_spe} .',
@@ -718,7 +792,7 @@ class Graph:
                     f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{RDF}type> <{DCAT}Distribution> {target_graph_spe} .',
                     file=fs)
                 print(
-                    f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{DCAT}accessURL> "{self.dictionary["title"]["P2"]}"^^<{XSD}anyURI> {target_graph_spe} .',
+                    f'<{CSSV_RSC}{self.dictionary["title"]["distribution_id"]}> <{DCAT}downloadURL> "{self.dictionary["title"]["P2"]}"^^<{XSD}anyURI> {target_graph_spe} .',
                     file=fs)
                 # specification Organization
                 print(
@@ -742,8 +816,9 @@ DCAT = "http://www.w3.org/ns/dcat#"
 ORG = "http://www.w3.org/ns/org#"
 SC = "http://data.europa.eu/2sa/scenarios#"
 SCHEMA = "http://schema.org/"
-STATUS = "http://data.europa.eu/2sa/rsc/assessment-status#"
-TOOL = "http://data.europa.eu/2sa/rsc/toolkit-version#"
+PAV = "http://purl.org/pav/"
+#STATUS = "http://data.europa.eu/2sa/rsc/assessment-status#"
+#TOOL = "http://data.europa.eu/2sa/rsc/toolkit-version#"
 
 RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 OWL = "http://www.w3.org/2002/07/owl#"
@@ -761,19 +836,21 @@ def declare_namespace(g):
     CSSV_ = Namespace("http://data.europa.eu/2sa/cssv#")
     CSSV_RSC_ = Namespace("http://data.europa.eu/2sa/cssv/rsc/")
     SC_ = Namespace("http://data.europa.eu/2sa/scenarios#")
-    STATUS_ = Namespace("http://data.europa.eu/2sa/rsc/assessment-status#")
-    TOOL_ = Namespace("http://data.europa.eu/2sa/rsc/toolkit-version#")
+    #STATUS_ = Namespace("http://data.europa.eu/2sa/rsc/assessment-status#")
+    #TOOL_ = Namespace("http://data.europa.eu/2sa/rsc/toolkit-version#")
     SCHEMA_ = Namespace("http://schema.org/")
+    PAV_ = Namespace("http://purl.org/pav/")
     DCT_ = "http://purl.org/dc/terms/"
     g.bind('camss', CAMSS, replace=True)
     g.bind('cav', CAV_, replace=True)
     g.bind('cssv', CSSV_, replace=True)
     g.bind('camssa', CAMSSA_, replace=True)
     g.bind('cssvrsc', CSSV_RSC_, replace=True)
-    g.bind('status', STATUS_, replace=True)
-    g.bind('tool', TOOL_, replace=True)
+    #g.bind('status', STATUS_, replace=True)
+    #g.bind('tool', TOOL_, replace=True)
     g.bind('sc', SC_, replace=True)
     g.bind('schema', SCHEMA_, replace=True)
+    g.bind('pav', PAV_, replace=True)
     g.bind('dct', DCT_, replace=True)
     g.bind('cccev', CCCEV_, replace=True)
     return g
